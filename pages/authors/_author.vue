@@ -57,69 +57,63 @@ export default {
 
 <style  scoped>
 .author {
-  text-align: center;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 40px 0px;
+	 text-align: center;
+	 max-width: 500px;
+	 margin: 0 auto;
+	 padding: 40px 0px;
 }
-
-.author__image {
-  border-radius: 50%;
-  border: 1px solid #d8d8d8;
+ .author__image {
+	 border-radius: 50%;
+	 border: 1px solid #d8d8d8;
 }
-
-.author__socials {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  li {
-    display: inline-block;
-    & + li {
-      margin-left: 10px;
-    }
-  }
-  a {
-    border: 1px solid #d8d8d8;
-    display: inline-block;
-    padding: 10px 15px;
-    border-radius: 4px;
-  }
+ .author__socials {
+	 margin: 0;
+	 padding: 0;
+	 list-style-type: none;
 }
-
-.author__posts-by {
-  text-align: center;
+ .author__socials li {
+	 display: inline-block;
 }
-
-.posts {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+ .author__socials li + li {
+	 margin-left: 10px;
 }
-
-.post {
-  color: inherit;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 30px;
-  transition: transform 500ms ease, box-shadow 500ms ease;
-  border: 1px solid #ddd;
-  &:hover, &:focus {
-    transform: translateY(-1px);
-    box-shadow: 0px 1px 10px 0px #ccc;
-  }
+ .author__socials a {
+	 border: 1px solid #d8d8d8;
+	 display: inline-block;
+	 padding: 10px 15px;
+	 border-radius: 4px;
 }
-
-.post__inner {
-  padding: 20px;
+ .author__posts-by {
+	 text-align: center;
 }
-
-.post__headline {
-  display: block;
-  font-size: 1.5em;
-  -webkit-margin-before: 0.83em;
-  -webkit-margin-after: 0.83em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
-  font-weight: bold;
+ .posts {
+	 margin: 0;
+	 padding: 0;
+	 list-style-type: none;
 }
+ .post {
+	 color: inherit;
+	 text-decoration: none;
+	 display: block;
+	 margin-bottom: 30px;
+	 transition: transform 500ms ease, box-shadow 500ms ease;
+	 border: 1px solid #ddd;
+}
+ .post:hover, .post:focus {
+	 transform: translateY(-1px);
+	 box-shadow: 0px 1px 10px 0px #ccc;
+}
+ .post__inner {
+	 padding: 20px;
+}
+ .post__headline {
+	 display: block;
+	 font-size: 1.5em;
+	 -webkit-margin-before: 0.83em;
+	 -webkit-margin-after: 0.83em;
+	 -webkit-margin-start: 0px;
+	 -webkit-margin-end: 0px;
+	 font-weight: bold;
+}
+ 
 </style>

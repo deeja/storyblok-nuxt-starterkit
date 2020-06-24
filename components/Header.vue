@@ -12,49 +12,40 @@
 
 <style >
 .header {
-  width: 100%;
-  height: 60px;
-  line-height: 40px;
-  text-align: center;
-
-  background-color: rgba(255,255,255,0.4);
-  box-shadow: 0 0 1px rgba(0,0,0,0.25);
-  box-sizing: border-box;
-
-  a {
-    border-bottom: 2px solid #fff;
-    &.nuxt-link-exact-active, &.nuxt-link-active, &:hover {
-      text-decoration: none;
-      border-color: #42b883;
-    }
-  }
+	 width: 100%;
+	 height: 60px;
+	 line-height: 40px;
+	 text-align: center;
+	 background-color: rgba(255, 255, 255, 0.4);
+	 box-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+	 box-sizing: border-box;
 }
-
-.header__nav-item--home {
-  a {
-    &.nuxt-link-active {
-      color: #000;
-      border-color: #fff;
-    }
-    &.nuxt-link-exact-active {
-      color: #42b883;
-      border-color: #42b883;
-    }
-  }
+ .header a {
+	 border-bottom: 2px solid #fff;
 }
-
-.header__nav {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+ .header a.nuxt-link-exact-active, .header a.nuxt-link-active, .header a:hover {
+	 text-decoration: none;
+	 border-color: #42b883;
 }
-
-.header__nav-item {
-  display: inline-block;
-  padding: 10px 0px;
-
-  & + .header__nav-item {
-    margin-left: 10px;
-  }
+ .header__nav-item--home a.nuxt-link-active {
+	 color: #000;
+	 border-color: #fff;
 }
+ .header__nav-item--home a.nuxt-link-exact-active {
+	 color: #42b883;
+	 border-color: #42b883;
+}
+ .header__nav {
+	 margin: 0;
+	 padding: 0;
+	 list-style-type: none;
+}
+ .header__nav-item {
+	 display: inline-block;
+	 padding: 10px 0px;
+}
+ .header__nav-item + .header__nav-item {
+	 margin-left: 10px;
+}
+ 
 </style>
