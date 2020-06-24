@@ -1,6 +1,8 @@
 {
-  "name": "nuxtbase",
+  "name": "nuxtwebsite",
   "version": "1.0.0",
+  "description": "A simple Nuxt.js setup to create websites with blog feature using Storyblok as CMS and Netlify to deploy it.",
+  "author": "Dominik Angerer <dominikangerer1@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -10,7 +12,11 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "nuxt": "^2.13.0"
+    "nuxt": "^2.13.0",
+    "crypto": "^1.0.1",
+    "marked": "^0.3.19",
+    "storyblok-nuxt": "0.0.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+  }
 }

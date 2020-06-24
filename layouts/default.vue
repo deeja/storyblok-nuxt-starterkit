@@ -1,20 +1,27 @@
 <template>
   <div>
-    <Nuxt />
+    <Header v-if="$route.path != '/'"/>
+    <nuxt/>
+    
+    <footer>
+      <a href="https://github.com/storyblok/nuxtwebsite" target="_blank" rel="noopener nofollow"><img src="https://a.storyblok.com/f/39898/766x200/643e23f56d/nuxt-doc.svg" alt="Logo"></a>
+    </footer>
   </div>
 </template>
 
-<style>
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+<script>
+import Header from '@/components/Header'
+
+export default {
+  components: {
+    Header
+  }
+}
+</script>
+
+<style lang="scss">
+html, body {
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -22,41 +29,49 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0px 20px;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  display: block;
+  font-size: 2em;
+  -webkit-margin-before: 0.67em;
+  -webkit-margin-after: 0.67em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: bold;
+}
+
+a {
+  color: #000;
   text-decoration: none;
-  padding: 10px 30px;
+  &.nuxt-link-exact-active, &.nuxt-link-active, &:hover {
+    color: #42b883;
+    border-color: #42b883;
+    text-decoration: underline;
+  }
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+footer {
+  text-align: center;
+  padding: 30px 0px;
+  img {
+    height: 30px;
+  }
 }
 </style>

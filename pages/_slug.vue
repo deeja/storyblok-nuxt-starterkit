@@ -12,7 +12,7 @@ export default {
     isEditMode(this)
   },
   async asyncData (context) {
-    const response = await context.app.$storyapi.get(`cdn/stories/home`, { version: 'draft' })
+    const response = await context.app.$storyapi.get(`cdn/stories${context.route.path}`, { version: 'draft' })
     return { story: response.data.story }
   }
 }
