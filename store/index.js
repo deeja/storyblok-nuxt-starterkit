@@ -73,7 +73,7 @@ export const actions = {
         console.error(err);
       });
   },
-  fetchLayout ({ commit }) {
+  fetchLayout ({ commit, state }) {
     const layoutPath  =  "cdn/stories/global"
     return this.$storyapi
       .get(layoutPath, getRequestOptions(state))
