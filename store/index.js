@@ -6,7 +6,8 @@ export const state = () => ({
   cacheVersion: 0,
   draftMode: false,
   stories: {},
-  menuLinks: null
+  menuLinks: null,
+  layout: null
 });
 
 export const mutations = {
@@ -34,6 +35,9 @@ export const mutations = {
   ADD_STORY(state, payload) {
     const updated = { [payload.path]: payload.story, ...state.stories };
     state.stories = updated;
+  },
+  SET_LAYOUT(state, layout) {
+    state.layout = layout;
   },
   SET_STORIES(state, stories) {
     state.stories = stories;
@@ -69,9 +73,19 @@ export const actions = {
         console.error(err);
       });
   },
+  fetchLayout ({ commit }) {
+    const layoutPath  =  "cdn/stories/global"
+    return this.$storyapi
+      .get(layoutPath, getRequestOptions(state))
+      .then(res => {
+        commit("SET_LAYOUT", res.data.story.content);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  },
   fetchMenuLinks({ commit, state }) {
     const path = "cdn/links";
-
     return this.$storyapi
       .get(path, getRequestOptions(state))
       .then(res => res.data)
@@ -108,7 +122,8 @@ export const getters = {
     const cdnPath = getStoryPath(route);
     return state.stories[cdnPath] || null;
   },
-  inDraftMode: state => state.draftMode
+  inDraftMode: state => state.draftMode,
+  getLayout: state => state.layout
 };
 
 const getStoryPath = ({ query, params }) => {

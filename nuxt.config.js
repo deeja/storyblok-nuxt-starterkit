@@ -30,12 +30,15 @@ export default {
           "A simple Nuxt.js setup to create websites with blog feature using Storyblok as CMS and Netlify to deploy it."
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+    
+      { rel: 'stylesheet', href: "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" }
+    ]
   },
   /*
    ** Customize the progress bar color
    */
-  css: [],
+    css: [],
   loading: { color: "#3B8070" },
   /*
    ** Basic Components and Content Type setup
@@ -43,6 +46,7 @@ export default {
   plugins: [
     "@/plugins/content-types",
     "@/plugins/filters",
+    "@/plugins/components",
     "@/plugins/helper"
   ],
   /*
@@ -54,8 +58,7 @@ export default {
    ** Storyblok Client
    */
   modules: [
-    [
-      "storyblok-nuxt",
+    [ "storyblok-nuxt",
       {
         accessToken: STORYBLOK_TOKEN,
         cacheProvider: "memory",
@@ -68,6 +71,7 @@ export default {
       "storyblok/handle_generate_payload",
       "storyblok/cache_version",
       "storyblok/enable_draft_mode",      
+      "storyblok/fetch_layout",
       "storyblok/fetch_story",
       "storyblok/fetch_menu_links"
     ]
