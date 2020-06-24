@@ -12,11 +12,9 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
+    "marked": "^1.1.0",
     "nuxt": "^2.13.0",
-    "crypto": "^1.0.1",
-    "marked": "^0.3.19",
-    "storyblok-nuxt": "0.0.3"
+    "storyblok-nuxt": "^1.2.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

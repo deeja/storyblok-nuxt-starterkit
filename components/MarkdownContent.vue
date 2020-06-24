@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .markdown {
   margin-bottom: 40px;
   h2, h3, h4, h5, h6 {

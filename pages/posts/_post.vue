@@ -43,7 +43,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .post__image {
   @media screen and (min-width: 840px) {
     width: 110%;

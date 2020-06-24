@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style >
 .teaser {
   background-size: cover;
   background-position: bottom;

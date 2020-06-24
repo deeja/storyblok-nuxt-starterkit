@@ -10,7 +10,7 @@
   </header>
 </template>
 
-<style lang="scss">
+<style >
 .header {
   width: 100%;
   height: 60px;

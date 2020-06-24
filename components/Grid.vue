@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang='scss'> 
+<style > 
 .grid {
   max-width: 1000px;
   padding: 20px 0px;

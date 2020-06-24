@@ -55,7 +55,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style  scoped>
 .author {
   text-align: center;
   max-width: 500px;
