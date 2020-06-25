@@ -10,8 +10,7 @@ export const state = () => ({
   cacheVersion: 0,
   draftMode: false,
   stories: {},
-  menuLinks: null,
-  layout: null
+  menuLinks: null
 });
 
 export const mutations = {
@@ -38,14 +37,11 @@ export const mutations = {
   },
   ADD_STORY(state, story) {
     const updated = {
-      [story.full_slug]: story,
+      [getCdnPath(story.full_slug)]: story,
       [story.uuid]: story,
       ...state.stories
     };
     state.stories = updated;
-  },
-  SET_LAYOUT(state, layout) {
-    state.layout = layout;
   },
   SET_MENU_LINKS(state, menuLinks) {
     state.menuLinks = menuLinks;
@@ -71,7 +67,7 @@ export const actions = {
     const storyPath = getStoryPath(route);
     return this.$storyapi
       .get(BASE_STORY_URL + storyPath, getRequestOptions(state))
-      .then(res => {
+      .then(res => {        
         commit("ADD_STORY", res.data.story);
       })
       .catch(err => {
@@ -81,6 +77,16 @@ export const actions = {
   fetchStoryById({ commit, state }, id) {
     return this.$storyapi
       .get(BASE_STORY_URL + id, {find_by: 'uuid', ...getRequestOptions(state)})
+      .then(res => {
+        commit("ADD_STORY", res.data.story);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  },
+  fetchStoryBySlug({ commit, state }, slug) {
+    return this.$storyapi
+      .get(BASE_STORY_URL + slug, getRequestOptions(state))
       .then(res => {
         commit("ADD_STORY", res.data.story);
       })
@@ -99,18 +105,6 @@ export const actions = {
         res.data.stories.forEach(s => {
           commit("ADD_STORY", s);
         });
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  },
-  // remove fetchlayout
-  fetchLayout({ commit, state }) {
-    const layoutPath = "cdn/stories/global"; // should only use the fetchStory
-    return this.$storyapi
-      .get(layoutPath, getRequestOptions(state))
-      .then(res => {
-        commit("SET_LAYOUT", res.data.story.content);
       })
       .catch(err => {
         console.error(err);
@@ -153,6 +147,9 @@ export const getters = {
     const storyPath = getStoryPath(route);
     return state.stories[storyPath] || null;
   },
+  getStoryBySlug: state => slug => {
+    return state.stories[slug] || null;
+  },
   getStoryById: state => id => {
     return state.stories[id] || null;
   },
@@ -162,8 +159,7 @@ export const getters = {
     );
     return keys.map(_ => state.stories[_]);
   },
-  inDraftMode: state => state.draftMode,
-  getLayout: state => state.layout
+  inDraftMode: state => state.draftMode  
 };
 
 const getStoryPath = ({ query, params }) => {
@@ -182,6 +178,6 @@ const getRequestOptions = state => {
   return { version: mode, cacheVersion };
 };
 
-const getCdnPath = path => path || "home";
+const getCdnPath = path => path && path.replace(/(^\/+|\/$)/g, '') || "home";
 
 const getMode = state => (state.draftMode ? "draft" : "published");

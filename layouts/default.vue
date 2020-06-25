@@ -1,6 +1,6 @@
 <template>
   <div class="body__wrap">
-    <div class="body__other">
+    <div class="body__other" v-if="layout && layout.header">
       <div v-if="!layout.header.length"
            v-editable="layout">
         Define header blocks here
@@ -13,7 +13,7 @@
     <main id="main" role="main" class="body__content">
       <nuxt/>
     </main>
-    <div class="body__other">
+    <div class="body__other" v-if="layout && layout.footer">
       <div v-if="!layout.footer.length"
            v-editable="layout">
         Define footer blocks here
@@ -29,10 +29,13 @@
 import {
   reactToEdits
 } from "@/helpers/Storyblok";
+
+const layoutSlug = "global";
 export default {
   computed: {
     layout() {
-      return this.$store.getters.getLayout;      
+      const story = this.$store.getters.getStoryBySlug(layoutSlug);      
+      return story && story.content;
     }
   }
 }
