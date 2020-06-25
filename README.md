@@ -25,8 +25,11 @@ https://nuxt-starter-kit.danbl.com/
 1. Choose _Create new space_
 1. Choose _Play with a demo_ 
 1. Wait for the demo to be created
-1. Get the preview key `Settings -> API Keys -> Preview Key`
-1. Add a preview url `Settings -> General -> Preview Urls` http://localhost:3000
+1. Get the preview key 
+    - `Settings -> API Keys -> Preview Key`
+1. Add a preview url 
+    - `Settings -> General -> Preview Urls`
+    - Add `http://localhost:3000`
 
 ### Set the storyblok token
 
@@ -39,11 +42,10 @@ const STORYBLOK_TOKEN =
   process.env.STORYBLOCK_TOKEN || "fRhLxFwXxMQSuteNdL1Lrwtt";
 ```
 
-
 ### Building for development
 
 Building for dev will let you see the site on your own computer! 
-You will be able to edit and change things through the storyblok interface.
+You will also be able to edit and change things through the storyblok interface.
 
 ``` bash
 # install dependencies
@@ -81,9 +83,11 @@ Set up a webhook to keep the generated files up to date with latest content.
 
 1. Create a site
 1. Connect your repo
-1. Set the build commands (Build Command: `yarn generate`, Folder: `dist`)
+1. Set the build commands 
+    - Build Command: `yarn generate`
+    - Folder: `dist`)
 1. Add the netlify __PREVIEW__ key (not public, unless you want it to be a non-editing deployment)
- - `Advanced -> STORYBLOCK_TOKEN: XXXXXXXXXXXXXXXXXXX`
+    - `Advanced -> STORYBLOCK_TOKEN: XXXXXXXXXXXXXXXXXXX`
 1. Deploy Site and verify deployment
 1. Create a build webhook on Netlify `Build & Deploy -> Add build hook -> master`
 1. Copy build webhook url to Storyblok `General -> Webhooks -> Story Published & Unpublished` 
