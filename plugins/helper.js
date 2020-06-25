@@ -22,9 +22,6 @@ export function isEditMode(app) {
     const space_id = app.$storyblok.getParam(encodeURI('_storyblok_tk[space_id]'))
     const timestamp = app.$storyblok.getParam(encodeURI('_storyblok_tk[timestamp]'))
 
-    // build control token by using the local accessToken and params
-    const controlString = `${space_id}:${app.$storyapi.accessToken}:${timestamp}`
-
     // hash it using sha1
     const controlToken = crypto.createHash('sha1').update(`${space_id}:${app.$storyapi.accessToken}:${timestamp}`).digest('hex')
 

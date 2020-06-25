@@ -16,27 +16,26 @@ module.exports = (storyblokToken) => {
     .then(space_res => {
       // timestamp of latest publish
       const cache_version = space_res.data.space.version;
-      //https://api.storyblok.com/v1/cdn/stories?starts_with=posts/&token=ask9soUkv02QqbZgmZdeDAtt
+      console.log("Cache version", cache_version)
       // Call for all Links using the Links API: https://www.storyblok.com/docs/Delivery-Api/Links
       const url = `/stories?token=${token}&version=${VERSION}&cv=${cache_version}`;
       return storyblokClient.get(url);
     })
     .then(res => {
       // with all the stories downloaded
-      const stories = res.data.stories;
+      let stories = res.data.stories.filter(_ => !!_.content);
+
       const payload = { stories: {} };
 
+      console.log("Stories", stories.length)
+      
+      payload.stories = stories;
       // add them to the payload as they are stored in vuex
-      for (const story of stories) {
-        payload.stories["cdn/stories/" +story.full_slug] = story;
-        const root = "pages/";
-        if (story.full_slug.startsWith(root)) {
-          const route = story.full_slug
-            .replace(root, "/")
-            .replace("/home", "/");
-          routes.push({ route, payload });
-        }
+      for (const story of stories) {       
+        const route = '/' + story.full_slug.replace(/^\/home/, "");
+        routes.push({ route, payload });        
       }
     })
-    .then(() => routes);
+    .then(() => routes)
+    .catch(err => console.error("Failed to build route table", err));
 };

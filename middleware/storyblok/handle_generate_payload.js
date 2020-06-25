@@ -7,9 +7,9 @@ export default function({ store, payload }) {
     return;
   }
   if (payload.stories) {
-    console.log("Setting stories", payload.stories);
+    console.log("Setting stories", payload.stories.length);
     for (const s of payload.stories) {
-      store.commit("SET_STORY", s);  
+      store.commit("ADD_STORY", s);  
     }    
   }  
 }

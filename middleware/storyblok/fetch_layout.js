@@ -1,3 +1,5 @@
-export default function({ app, isServer, route, store, isDev }) {
-  return store.dispatch("fetchStoryBySlug", "global")
+export default function({ store, payload }) {
+  if (!payload){
+    return store.dispatch("fetchStoryBySlug", "global")
+  }
 }

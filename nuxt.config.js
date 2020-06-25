@@ -1,14 +1,14 @@
 // NOTE: The Storyblok token should not be stored in this config.
 // Using an environment variable is a good choice
-// e.g. const token = env.STORYBLOCK_TOKEN
-const STORYBLOK_TOKEN = "fRhLxFwXxMQSuteNdL1Lrwtt";
+// e.g. const token = process.env.STORYBLOCK_TOKEN
+const STORYBLOK_TOKEN = process.env.STORYBLOCK_TOKEN || "fRhLxFwXxMQSuteNdL1Lrwtt"; 
 
 export default {
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  mode: "spa",
+  mode: "universal",
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -19,7 +19,7 @@ export default {
    */
   head: {
     title:
-      "NuxtWebsite - Create your website with NuxtJS, Storyblok and deploy it on Netlify.",
+      "Storyblok + Nuxt.js - A starter kit",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -27,7 +27,7 @@ export default {
         hid: "description",
         name: "description",
         content:
-          "A simple Nuxt.js setup to create websites with blog feature using Storyblok as CMS and Netlify to deploy it."
+          "A starter kit for building a JAMStack + Headless CMS solution; built with Nuxt.js and Storyblok"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -80,8 +80,9 @@ export default {
    ** Generate Routes via Storybloks Links API.
    */
   generate: {
+    crawler: false, // don't crawl the generated pages for more links
     fallback: true, // 404.html generation + _redirects file in static folder
-    routes: () => siteRouteGenerator(STORYBLOK_TOKEN)
+    routes: () => require('./helpers/SiteGeneration')(STORYBLOK_TOKEN)
   },
   /*
    ** Build configuration
@@ -91,11 +92,10 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, { isClient, isDev, loaders: { vue } }) {
+    extend(config, { isDev }) {
       if (isDev) {
         config.devtool = "source-map";
-      }
-      vue.transformAssetUrls.LazyImage = ["src"];
+      }      
     }
   }
 };
