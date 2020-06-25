@@ -1,8 +1,8 @@
 // NOTE: The Storyblok token should not be stored in this config.
 // Using an environment variable is a good choice
-// e.g. const token = process.env.STORYBLOCK_TOKEN
+// e.g. const token = process.env.STORYBLOK_TOKEN
 const STORYBLOK_TOKEN =
-  process.env.STORYBLOCK_TOKEN || "fRhLxFwXxMQSuteNdL1Lrwtt";
+  process.env.STORYBLOK_TOKEN || "fRhLxFwXxMQSuteNdL1Lrwtt";
 
 export default {
   /*
