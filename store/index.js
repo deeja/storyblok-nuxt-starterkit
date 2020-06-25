@@ -1,3 +1,7 @@
+const BASE_STORY_URL = "cdn/stories/";
+const BASE_LINKS_URL = "cdn/links";
+const BASE_SPACES_URL = "cdn/spaces/me/";
+
 /**
 @summary Default Store
 https://old.reddit.com/r/vuejs/comments/9bao0t/recommended_approach_to_lazy_loading_with_vuex/e52y42m/
@@ -32,15 +36,16 @@ export const mutations = {
     console.log("CACHE VERSION: ", version); // keep so cache version is visible on build
     state.cacheVersion = version;
   },
-  ADD_STORY(state, payload) {
-    const updated = { [payload.path]: payload.story, ...state.stories };
+  ADD_STORY(state, story) {
+    const updated = {
+      [story.full_slug]: story,
+      [story.uuid]: story,
+      ...state.stories
+    };
     state.stories = updated;
   },
   SET_LAYOUT(state, layout) {
     state.layout = layout;
-  },
-  SET_STORIES(state, stories) {
-    state.stories = stories;
   },
   SET_MENU_LINKS(state, menuLinks) {
     state.menuLinks = menuLinks;
@@ -57,7 +62,7 @@ export const mutations = {
 
 export const actions = {
   fetchCacheVersion({ commit }) {
-    return this.$storyapi.get("cdn/spaces/me/").then(res => {
+    return this.$storyapi.get(BASE_SPACES_URL).then(res => {
       const cacheVersion = res.data.space.version;
       commit("SET_CACHE_VERSION", cacheVersion);
     });
@@ -65,16 +70,43 @@ export const actions = {
   fetchStory({ commit, state }, route) {
     const storyPath = getStoryPath(route);
     return this.$storyapi
-      .get(storyPath, getRequestOptions(state))
+      .get(BASE_STORY_URL + storyPath, getRequestOptions(state))
       .then(res => {
-        commit("ADD_STORY", { path: storyPath, story: res.data.story });
+        commit("ADD_STORY", res.data.story);
       })
       .catch(err => {
         console.error(err);
       });
   },
-  fetchLayout ({ commit, state }) {
-    const layoutPath  =  "cdn/stories/global"
+  fetchStoryById({ commit, state }, id) {
+    return this.$storyapi
+      .get(BASE_STORY_URL + id, {find_by: 'uuid', ...getRequestOptions(state)})
+      .then(res => {
+        commit("ADD_STORY", res.data.story);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  },
+  fetchStories({ commit, state }, startsWith) {
+    return this.$storyapi
+      .get(BASE_STORY_URL, {
+        ...getRequestOptions(state),
+        starts_with: startsWith,
+        is_startpage: 0,
+      })
+      .then(res => {
+        res.data.stories.forEach(s => {
+          commit("ADD_STORY", s);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  },
+  // remove fetchlayout
+  fetchLayout({ commit, state }) {
+    const layoutPath = "cdn/stories/global"; // should only use the fetchStory
     return this.$storyapi
       .get(layoutPath, getRequestOptions(state))
       .then(res => {
@@ -85,9 +117,8 @@ export const actions = {
       });
   },
   fetchMenuLinks({ commit, state }) {
-    const path = "cdn/links";
     return this.$storyapi
-      .get(path, getRequestOptions(state))
+      .get(BASE_LINKS_URL, getRequestOptions(state))
       .then(res => res.data)
       .then(data => {
         const linkArray = Object.values(data.links);
@@ -118,9 +149,18 @@ export const getters = {
   getMenuLinks(state) {
     return state.menuLinks;
   },
-  getStory: state => route => {
-    const cdnPath = getStoryPath(route);
-    return state.stories[cdnPath] || null;
+  getStoryByRoute: state => route => {
+    const storyPath = getStoryPath(route);
+    return state.stories[storyPath] || null;
+  },
+  getStoryById: state => id => {
+    return state.stories[id] || null;
+  },
+  getStories: state => startsWith => {
+    const keys = Object.keys(state.stories).filter(_ =>
+      _.startsWith(startsWith)
+    );
+    return keys.map(_ => state.stories[_]);
   },
   inDraftMode: state => state.draftMode,
   getLayout: state => state.layout
@@ -133,7 +173,7 @@ const getStoryPath = ({ query, params }) => {
   } else {
     storyId = getCdnPath(params.pathMatch);
   }
-  return "cdn/stories/" + storyId;
+  return storyId;
 };
 
 const getRequestOptions = state => {
@@ -142,6 +182,6 @@ const getRequestOptions = state => {
   return { version: mode, cacheVersion };
 };
 
-const getCdnPath = path => (path || "home");
+const getCdnPath = path => path || "home";
 
 const getMode = state => (state.draftMode ? "draft" : "published");

@@ -87,5 +87,15 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {}
+  build: {
+    /*
+     ** You can extend webpack config here
+     */
+    extend(config, { isClient, isDev, loaders: { vue } }) {
+      if (isDev) {
+        config.devtool = "source-map";
+      }
+      vue.transformAssetUrls.LazyImage = ["src"];
+    }
+  }
 };

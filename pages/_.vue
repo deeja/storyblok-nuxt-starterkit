@@ -16,7 +16,7 @@ import {
 export default {  
   computed: {
     story() {
-      const story = this.$store.getters.getStory(this.$route);
+      const story = this.$store.getters.getStoryByRoute(this.$route);
       if (process.client && this.$store.state.draftMode) {
         reactToEdits(this, story);
       }
@@ -24,7 +24,7 @@ export default {
     }
   },
   validate({store, route}) {
-    return store.getters.getStory(route);
+    return store.getters.getStoryByRoute(route);
   }
 };
 </script>

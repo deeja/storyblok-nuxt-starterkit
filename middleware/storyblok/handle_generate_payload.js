@@ -8,10 +8,8 @@ export default function({ store, payload }) {
   }
   if (payload.stories) {
     console.log("Setting stories", payload.stories);
-    store.commit("SET_STORIES", payload.stories);
-  }
-  if (payload.settings) {
-    console.log("Setting settings", payload.settings);
-    store.commit("SET_SETTINGS", payload.settings);
-  }
+    for (const s of payload.stories) {
+      store.commit("SET_STORY", s);  
+    }    
+  }  
 }
