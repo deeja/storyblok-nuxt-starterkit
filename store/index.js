@@ -32,13 +32,15 @@ export const mutations = {
    * @param {*} version
    */
   SET_CACHE_VERSION(state, version) {
-    console.log("CACHE VERSION: ", version); // keep so cache version is visible on build
     state.cacheVersion = version;
   },
   ADD_STORY(state, story) {
+
+    // TODO: handle translated_slugs
     const updated = {
-      [getCdnPath(story.full_slug)]: story,
+      [getStorySlug(story.full_slug)]: story,
       [story.uuid]: story,
+      [story.id]: story,
       ...state.stories
     };
     state.stories = updated;
@@ -67,7 +69,7 @@ export const actions = {
     const storyPath = getStoryPath(route);
     return this.$storyapi
       .get(BASE_STORY_URL + storyPath, getRequestOptions(state))
-      .then(res => {        
+      .then(res => {
         commit("ADD_STORY", res.data.story);
       })
       .catch(err => {
@@ -76,7 +78,10 @@ export const actions = {
   },
   fetchStoryById({ commit, state }, id) {
     return this.$storyapi
-      .get(BASE_STORY_URL + id, {find_by: 'uuid', ...getRequestOptions(state)})
+      .get(BASE_STORY_URL + id, {
+        find_by: "uuid",
+        ...getRequestOptions(state)
+      })
       .then(res => {
         commit("ADD_STORY", res.data.story);
       })
@@ -99,7 +104,7 @@ export const actions = {
       .get(BASE_STORY_URL, {
         ...getRequestOptions(state),
         starts_with: startsWith,
-        is_startpage: 0,
+        is_startpage: 0
       })
       .then(res => {
         res.data.stories.forEach(s => {
@@ -159,7 +164,7 @@ export const getters = {
     );
     return keys.map(_ => state.stories[_]);
   },
-  inDraftMode: state => state.draftMode  
+  inDraftMode: state => state.draftMode
 };
 
 const getStoryPath = ({ query, params }) => {
@@ -167,7 +172,7 @@ const getStoryPath = ({ query, params }) => {
   if (query._storyblok) {
     storyId = query._storyblok;
   } else {
-    storyId = getCdnPath(params.pathMatch);
+    storyId = getStorySlug(params.pathMatch);
   }
   return storyId;
 };
@@ -178,6 +183,7 @@ const getRequestOptions = state => {
   return { version: mode, cacheVersion };
 };
 
-const getCdnPath = path => path && path.replace(/(^\/+|\/$)/g, '') || "home";
+const getStorySlug = path =>
+  (path && path.replace(/(^\/+|\/$)/g, "")) || "home";
 
 const getMode = state => (state.draftMode ? "draft" : "published");
