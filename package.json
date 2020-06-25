@@ -13,6 +13,7 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
+    "@nuxtjs/tailwindcss": "^2.0.0",
     "axios": "^0.19.2",
     "marked": "^1.1.0",
     "nuxt": "^2.13.0",

@@ -31,20 +31,14 @@ export default {
       }
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-
-      {
-        rel: "stylesheet",
-        href:
-          "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   /*
-   ** Customize the progress bar color
-   */
-  css: [],
-  loading: { color: "#3B8070" },
+  ** Global CSS
+  */
+  css: [
+  ],
   /*
    ** Basic Components and Content Type setup
    */
@@ -60,8 +54,15 @@ export default {
    */
   components: true,
   /*
-   ** Storyblok Client
-   */
+  ** Nuxt.js dev-modules
+  */
+  buildModules: [
+    // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
+    '@nuxtjs/tailwindcss',
+  ],
+  /*
+  ** Nuxt.js modules
+  */
   modules: [
     [
       "storyblok-nuxt",
