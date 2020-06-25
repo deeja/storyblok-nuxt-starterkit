@@ -18,9 +18,8 @@ https://nuxt-starter-kit.danbl.com/
 
 ## Getting Started
 
-### Set up a demo site
+### Set up a demo site on Storyblok
 
-#### Create a demo site
 1. Go to storyblok.com 
 1. Choose _Create new space_
 1. Choose _Play with a demo_ 
