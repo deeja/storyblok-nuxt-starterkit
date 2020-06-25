@@ -1,7 +1,8 @@
 // NOTE: The Storyblok token should not be stored in this config.
 // Using an environment variable is a good choice
 // e.g. const token = process.env.STORYBLOCK_TOKEN
-const STORYBLOK_TOKEN = process.env.STORYBLOCK_TOKEN || "fRhLxFwXxMQSuteNdL1Lrwtt"; 
+const STORYBLOK_TOKEN =
+  process.env.STORYBLOCK_TOKEN || "fRhLxFwXxMQSuteNdL1Lrwtt";
 
 export default {
   /*
@@ -18,8 +19,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title:
-      "Storyblok + Nuxt.js - A starter kit",
+    title: "Storyblok + Nuxt.js - A starter kit",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -30,15 +30,20 @@ export default {
           "A starter kit for building a JAMStack + Headless CMS solution; built with Nuxt.js and Storyblok"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-    
-      { rel: 'stylesheet', href: "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" }
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+
+      {
+        rel: "stylesheet",
+        href:
+          "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      }
     ]
   },
   /*
    ** Customize the progress bar color
    */
-    css: [],
+  css: [],
   loading: { color: "#3B8070" },
   /*
    ** Basic Components and Content Type setup
@@ -58,7 +63,8 @@ export default {
    ** Storyblok Client
    */
   modules: [
-    [ "storyblok-nuxt",
+    [
+      "storyblok-nuxt",
       {
         accessToken: STORYBLOK_TOKEN,
         cacheProvider: "memory",
@@ -70,7 +76,7 @@ export default {
     middleware: [
       "storyblok/handle_generate_payload",
       "storyblok/cache_version",
-      "storyblok/enable_draft_mode",      
+      "storyblok/enable_draft_mode",
       "storyblok/fetch_layout",
       "storyblok/fetch_story",
       "storyblok/fetch_menu_links"
@@ -82,7 +88,7 @@ export default {
   generate: {
     crawler: false, // don't crawl the generated pages for more links
     fallback: true, // 404.html generation + _redirects file in static folder
-    routes: () => require('./helpers/SiteGeneration')(STORYBLOK_TOKEN)
+    routes: () => require("./helpers/SiteGeneration")(STORYBLOK_TOKEN)
   },
   /*
    ** Build configuration
@@ -95,7 +101,7 @@ export default {
     extend(config, { isDev }) {
       if (isDev) {
         config.devtool = "source-map";
-      }      
+      }
     }
   }
 };
