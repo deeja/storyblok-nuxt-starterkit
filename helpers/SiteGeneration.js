@@ -32,7 +32,10 @@ module.exports = (storyblokToken) => {
       payload.stories = stories;
       // add them to the payload as they are stored in vuex
       for (const story of stories) {       
-        const route = '/' + story.full_slug.replace(/^\/home/, "");
+        let route = '/' + story.full_slug;
+        if (route == '/home'){
+          route = "/"
+        }
         routes.push({ route, payload });        
       }
     })
