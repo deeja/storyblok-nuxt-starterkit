@@ -21,6 +21,13 @@ export const reactToEdits = function(component, story) {
   });
 };
 
+export const resizeImage =  (image, sizeOptions) => {
+  if (typeof image === "undefined") {
+    return null;
+  }  
+  return '//img2.storyblok.com/' + sizeOptions + image.replace('//a.storyblok.com', '')
+}
+
 /**
  * https://stackoverflow.com/a/40732240/59532
  * @param {*} links

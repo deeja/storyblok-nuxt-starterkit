@@ -1,5 +1,5 @@
 import Vue from "vue";
-
+import {resizeImage} from './../helpers/Storyblok'
 
 /**
  * Transform images using the storyblok image service
@@ -8,12 +8,7 @@ import Vue from "vue";
  * @param {*} image Original Image URL
  * @param {*} sizeOptions Transform options https://www.storyblok.com/tp/storyblok-image-service-vuejs
  */
-Vue.filter("resize", (image, sizeOptions) => {
-  if (typeof image === "undefined") {
-    return null;
-  }  
-  return '//img2.storyblok.com/' + sizeOptions + image.replace('//a.storyblok.com', '')
-});
+Vue.filter("resize", resizeImage);
 
 
 /**
