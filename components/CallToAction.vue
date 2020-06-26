@@ -1,7 +1,7 @@
 <template>
   <section
     v-editable="blok"
-    class="py-32 text-center"
+    class="py-10 text-center"
     :class="blok.section_style.join(' ')"
     :style="backgroundStyles"
   >

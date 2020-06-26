@@ -18,3 +18,7 @@ h5 {
   @apply text-base;
   @apply font-bold;
 }
+.markup a {
+    @apply underline;
+    @apply text-blue-800;
+}

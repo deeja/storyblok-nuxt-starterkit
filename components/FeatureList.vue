@@ -1,5 +1,5 @@
 <template>
-  <div class="flex text-center pt-5 w-full"
+  <div class="flex text-center p-5 w-full justify-around"
        v-editable="blok">
     <component :key="blok._uid" class="p-2"
                v-for="blok in blok.body"
