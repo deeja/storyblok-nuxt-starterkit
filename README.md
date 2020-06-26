@@ -92,6 +92,16 @@ Set up a webhook to keep the generated files up to date with latest content.
 1. Copy build webhook url to Storyblok `General -> Webhooks -> Story Published & Unpublished` 
 
 
+## NOTES 
+
+### Tailwind
+Tailwind usually purges all unused css classes within it's library on production build.
+I have disabled that in the `tailwind.config.js` for this project.
+The issue is when you are using dynamically added classes. As Tailwind won't see them, it will purge those classes and the site will look bad.
+
+You can whitelist classes. https://github.com/FullHuman/purgecss-docs/blob/master/whitelisting.md
+
+
 
 
 
