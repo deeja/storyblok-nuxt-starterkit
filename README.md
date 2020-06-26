@@ -19,6 +19,8 @@ https://nuxt-starter-kit.danbl.com/
 ## Getting Started
 
 ### Set up a demo site on Storyblok
+First we are setting up a site that uses the base [bootstrap demo version](https://github.com/storyblok/bootstrap-nuxt-demo/)).
+But don't worry; we will add our own soon.
 
 1. Go to storyblok.com 
 1. Choose _Create new space_
@@ -30,7 +32,12 @@ https://nuxt-starter-kit.danbl.com/
     - `Settings -> General -> Preview Urls`
     - Add `http://localhost:3000`
 
-### Set the storyblok token
+### Download or copy or clone the code to your own computer
+
+If you're reading this, then I'm guessing you know how to do this.
+Otherwise, learn how to [git](https://git-scm.com/) or just use the `zip` download. 
+
+### Set the storyblok token in the nuxt.config.js
 
 Change the `STORYBLOK_TOKEN` in the `nuxt.config.js`, or set it using an environment variable. 
 ```js
@@ -55,7 +62,7 @@ $ yarn dev
 
 ```
 
-### Building for production
+### Building locally to preview the production build
 
 ``` bash
 # generate static project
@@ -93,6 +100,22 @@ Set up a webhook to keep the generated files up to date with latest content.
 
 
 ## NOTES 
+
+### How to use this kit for your own project
+
+1. Get it running using the instructions above
+1. Delete all the Storybook pages from the demo site.    
+1. Delete the all components, EXCEPT Global and Page:
+    - from  Storybook
+    - from the  Components folder.
+    - from the `/plugins/components.js`
+1. Modify Global and Home components to the data structure you need
+    - Global: Keep the header and footer sections
+1. Add pages
+    - Global of type Global
+    - Home of type Page
+
+If you leave this repo as a git secondary remote, you will be able to pull in changes when they are made here.
 
 ### Tailwind
 Tailwind usually purges all unused css classes within it's library on production build.
