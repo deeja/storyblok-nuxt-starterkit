@@ -6,14 +6,11 @@
       </nuxt-link>
 
       <button
-        v-if="!blok.hide_navi"
         type="button"
-        :data-target="`#navbar-${blok._uid}`"
-        :aria-controls="`navbar-${blok._uid}`"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/></svg>
       </button>
 
       <ul v-if="blok.nav_links && blok.nav_links.length" class="flex">

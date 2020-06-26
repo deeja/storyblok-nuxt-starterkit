@@ -6,7 +6,7 @@
     <h3>{{ blok.headline }}</h3>
     <p>{{ blok.text }}</p>
     <p class="mt-3">
-      <a class="btn"
+      <a class="button-standard"
          :href="blok.button_link.cached_url">
         {{ blok.button_text }}
       </a>

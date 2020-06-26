@@ -87,7 +87,7 @@
                          :is="blok.component | dashify"></component>
             </ul>
 
-            <a class="btn ml-md-3" :href="blok.button_link.cached_url">
+            <a class="button-standard ml-md-3" :href="blok.button_link.cached_url">
               {{ blok.button_text }}
             </a>
           </div>

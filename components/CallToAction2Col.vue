@@ -5,7 +5,7 @@
       <div class="row items-center">
         <div class="w-full  sm:w-3/12 text-center"
              v-if="blok.style == 'right'">
-          <a class="btn"
+          <a class="button-standard"
              :href="blok.button_link.cached_url">
             {{ blok.button_text }}
           </a>
@@ -20,7 +20,7 @@
         </div>
         <div class="w-full  sm:w-3/12 text-left sm:text-center mt-4 sm:mt-0"
              v-if="blok.style != 'right'">
-          <a class="btn"
+          <a class="button-standard"
              :href="blok.button_link.cached_url">
             {{ blok.button_text }}
           </a>

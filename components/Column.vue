@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" :class="columnStyle" class="flex">
+  <div v-editable="blok" :class="columnStyle" class="flex-column">
     <component
       :key="blok._uid"
       v-for="blok in blok.body"

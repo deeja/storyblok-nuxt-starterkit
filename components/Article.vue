@@ -1,6 +1,5 @@
 <template>
-  <section v-editable="blok">
-    <div class="">
+      <div v-editable="blok" class="border lg:px-3 md:p-1 mb-5 rounded">
       <div class="w-full text-left">
         <h2 class="text-4xl">{{ blok.title }}</h2>
       </div>
@@ -19,24 +18,29 @@
 
           <markdown :text="blok.long_text"></markdown>
         </div>
-        <div class="w-4/12 ml-5">
-          <div v-if="author">
-            <h3 class="text-xl pb-1">Author</h3>
-            <div class="flex items-center mb-2">
-              <div class="mr-2">
-                <img class="h-12" :src="author.content.image" />
+          <div class="md:w-4/12 px-2">
+          <div class="border rounded pb-2 mb-2">
+            <h4 class="bg-gray-100 border-b pl-2">Categories</h4>
+
+            <ul class="pl-2">
+              <li v-for="category in categories" :key="category.id">
+                {{ category.name }}
+              </li>
+            </ul>
+          </div>
+
+          <div class="border rounded pb-2">
+            <h4 class="bg-gray-100 border-b pl-2">Author</h4>
+            <div class="flex items-center mb-2 p-2">
+              <div class="mr-2 h-8">
+                <img class="max-h-full" :src="author.content.image" />
               </div>
               <p>{{ author.content.name }}</p>
             </div>
           </div>
-          <h3 class="mt-5 text-xl pb-1">Categories</h3>
-          <ul class="mb-0 list-disc list-inside">
-            <li v-for="category in categories" :key="category.id">{{ category.name }}</li>
-          </ul>
-        </div>
+        </div>   
       </div>
     </div>
-  </section>
 </template>
 
 <script>
