@@ -9,7 +9,7 @@
           <div class="mb-4 border rounded" :key="article.id" v-for="article in articles">
             <img
               v-if="article.content.teaser_image"
-              class="card-img-top"
+              class="w-full"
               :src="article.content.teaser_image | resize('500x200')"
               alt="image"
             />

@@ -104,9 +104,9 @@ Set up a webhook to keep the generated files up to date with latest content.
 ### How to use this kit for your own project
 
 1. Get it running using the instructions above
-1. Delete all the Storybook pages from the demo site.    
+1. Delete all the Storyblok pages from the demo site.    
 1. Delete the all components, EXCEPT Global and Page:
-    - from  Storybook
+    - from  Storyblok
     - from the  Components folder.
     - from the `/plugins/components.js`
 1. Modify Global and Home components to the data structure you need
