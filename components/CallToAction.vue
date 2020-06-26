@@ -1,12 +1,12 @@
 <template>
   <section
     v-editable="blok"
-    class="py-32"
+    class="py-32 text-center"
     :class="blok.section_style.join(' ')"
     :style="backgroundStyles"
   >
     <div :class="blok.container_style.join(' ')">
-      <div class="flex flex-center" :class="blok.row_style.join(' ')">
+      <div class="flex flex-wrap justify-center" :class="blok.row_style.join(' ')">
         <div
           class="w-full sm:w-8/12 mx-auto"
           thisone
@@ -56,7 +56,7 @@
             <img alt="image" class="img-fluid br-0" :src="blok.image" />
           </div>
         </div>
-        <div :class="columnStyle">
+        <div :class="columnStyle" v-if="blok.bottom_body && blok.bottom_body.length ">
           <component
             :key="blok._uid"
             v-for="blok in blok.bottom_body"
