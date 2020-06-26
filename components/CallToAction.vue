@@ -1,17 +1,17 @@
 <template>
   <section
     v-editable="blok"
-    class="fdb-block"
+    
     :class="blok.section_style.join(' ')"
     :style="backgroundStyles"
   >
-    <div class :class="blok.container_style.join(' ')">
-      <div class="row" :class="blok.row_style.join(' ')">
-        <div class="w-full  sm:w-6/12" v-if="blok.image && blok.image_position == 'left'">
+    <div :class="blok.container_style.join(' ')">
+      <div  :class="blok.row_style.join(' ')">
+        <div class="w-full sm:w-6/12 mx-auto" thisone v-if="blok.image && blok.image_position == 'left'">
           <img alt="Image" class="img-fluid" :src="blok.image" />
         </div>
 
-        <div :class="columnStyle">
+        <div :class="columnStyle" class="mx-auto ">
           <img
             :alt="blok.icon_alt_text"
             height="40"
@@ -25,9 +25,9 @@
           </p>
 
           <div :class="boxStyle">
-            <h1 v-if="blok.headline">{{ blok.headline }}</h1>
+            <h1 class="text-2xl" v-if="blok.headline">{{ blok.headline }}</h1>
 
-            <h2 v-if="blok.headline_2">{{ blok.headline_2 }}</h2>
+            <h2 class="text-xl" v-if="blok.headline_2">{{ blok.headline_2 }}</h2>
 
             <h3 v-if="blok.subheadline">
               <strong>{{ blok.subheadline }}</strong>
@@ -44,14 +44,14 @@
               ></component>
             </p>
 
+          </div>
+
             <component
               :key="blok._uid"
               v-for="blok in blok.buttons"
               :blok="blok"
               :is="blok.component | dashify"
             ></component>
-          </div>
-
           <div
             class="w-full  sm:w-4/12 md:w-6/12 lg:w-4/12 m-auto pt-5"
             v-if="blok.image && blok.image_position == 'left'"

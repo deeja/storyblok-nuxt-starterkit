@@ -1,7 +1,7 @@
 <template>
-  <div class="row text-center justify-content-center pt-5"
+  <div class="flex text-center pt-5 w-full"
        v-editable="blok">
-    <component :key="blok._uid"
+    <component :key="blok._uid" class="p-2"
                v-for="blok in blok.body"
                :blok="blok"
                :is="blok.component | dashify"></component>

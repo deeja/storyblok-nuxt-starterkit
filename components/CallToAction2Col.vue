@@ -1,8 +1,8 @@
 <template>
-  <section class="fdb-block"
+  <section 
            v-editable="blok">
-    <div class="">
-      <div class="row align-items-center">
+    <div >
+      <div class="row items-center">
         <div class="w-full  sm:w-3/12 text-center"
              v-if="blok.style == 'right'">
           <a class="btn"
@@ -10,7 +10,7 @@
             {{ blok.button_text }}
           </a>
         </div>
-        <div class="w-full  sm:w-9/12 text-center text-sm-right mt-4 mt-sm-0"
+        <div class="w-full  sm:w-9/12 text-center sm:text-right mt-4 mt-0"
              v-if="blok.style == 'right'">
           <h2>{{ blok.headline }}</h2>
         </div>
@@ -18,7 +18,7 @@
              v-if="blok.style != 'right'">
           <h2>{{ blok.headline }}</h2>
         </div>
-        <div class="w-full  sm:w-3/12 text-left text-sm-center mt-4 mt-sm-0"
+        <div class="w-full  sm:w-3/12 text-left sm:text-center mt-4 sm:mt-0"
              v-if="blok.style != 'right'">
           <a class="btn"
              :href="blok.button_link.cached_url">

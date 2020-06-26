@@ -9,7 +9,7 @@
         :is="blok.component | dashify"
       ></component>
     </div>
-    <main id="main" role="main">
+    <main id="main" role="main" class="w-2/3 mx-auto">
       <nuxt/>
     </main>
     <div v-if="layout && layout.footer">

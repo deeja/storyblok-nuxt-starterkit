@@ -3,7 +3,7 @@
     <nuxt-link :to="`/${blok.link.cached_url}`" class="p-4">      
       <img alt="image"
            :src="blok.image"
-           class=""
+           
            height="40"
            v-if="blok.image">
       {{ blok.name }}

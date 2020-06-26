@@ -1,11 +1,11 @@
 <template>
   <section v-editable="blok" class="fdb-block">
-    <div class="">
+    <div >
       <div class="row">
         <div class="md:w-8/12">
           <h1>{{ blok.headline }}</h1>
 
-          <div class="card mb-4" :key="article.id" v-for="article in articles">
+          <div class="mb-4" :key="article.id" v-for="article in articles">
             <img
               v-if="article.content.teaser_image"
               class="card-img-top"
@@ -25,8 +25,8 @@
         </div>
 
         <div class="md:w-4/12">
-          <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
+          <div class="my-4">
+            <h5 >Categories</h5>
             <div class="card-body">
               <ul class="list-unstyled mb-0">
                 <li v-for="category in categories" :key="category.id">
@@ -36,10 +36,10 @@
             </div>
           </div>
 
-          <div class="card my-4">
-            <h5 class="card-header">Authors</h5>
+          <div class="my-4">
+            <h5 >Authors</h5>
             <div class="card-body">
-              <div class="d-flex align-items-center mb-2" v-for="author in authors" :key="author.id">
+              <div class="flex items-center mb-2" v-for="author in authors" :key="author.id">
                 <div class="mr-2">
                   <img height="30" :src="author.content.image" />
                 </div>
