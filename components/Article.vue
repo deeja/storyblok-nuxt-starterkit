@@ -1,9 +1,10 @@
 <template>
-  <section  v-editable="blok">
-    <div class>
+  <section v-editable="blok">
+    <div class="">
       <div class="w-full text-left">
-          <h2 class="text-4xl">{{ blok.title }}</h2>
-        </div> <div class="flex">
+        <h2 class="text-4xl">{{ blok.title }}</h2>
+      </div>
+      <div class="flex">
         <div class="w-8/12 text-left">
           <img
             :src="blok.teaser_image | resize('800x0')"
@@ -12,7 +13,7 @@
             v-if="blok.teaser_image"
           />
 
-          <p>
+          <p class="m-1">
             <markdown :text="blok.intro"></markdown>
           </p>
 

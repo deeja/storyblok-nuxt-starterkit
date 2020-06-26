@@ -3,7 +3,7 @@
              :is="blok.is_inline ? 'span' : 'p'"
              :class="blok.paragraph_style.join(' ')">
     <a :href="blok.link.cached_url"
-       class="p-2 border-2 border-blue-600 bg-blue-600 text-white hover:bg-blue-800 inline-block"
+       class="button-standard"
        :class="blok.style.join(' ')"
        target="_blank">
       {{ blok.text }}

@@ -91,7 +91,7 @@ Set up a webhook to keep the generated files up to date with latest content.
 1. Connect your repo
 1. Set the build commands 
     - Build Command: `yarn generate`
-    - Folder: `dist`)
+    - Folder: `dist`
 1. Add the netlify __PREVIEW__ key (not public, unless you want it to be a non-editing deployment)
     - `Advanced -> STORYBLOK_TOKEN: XXXXXXXXXXXXXXXXXXX`
 1. Deploy Site and verify deployment
@@ -114,6 +114,7 @@ Set up a webhook to keep the generated files up to date with latest content.
 1. Add pages
     - Global of type Global
     - Home of type Page
+1. Remove all custom styles from `assets/css/tailwind.css`
 
 If you leave this repo as a git secondary remote, you will be able to pull in changes when they are made here.
 

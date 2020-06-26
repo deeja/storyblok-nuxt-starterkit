@@ -18,7 +18,19 @@ h5 {
   @apply text-base;
   @apply font-bold;
 }
-.markup a {
+.markdown a {
     @apply underline;
     @apply text-blue-800;
+}
+.button-standard {
+  @apply p-2;
+  @apply border-2;
+  @apply border-blue-600;
+  @apply bg-blue-600;
+  @apply text-white;
+  @apply inline-block;
+}
+
+.button-standard:hover{
+  @apply bg-blue-800;
 }
