@@ -1,6 +1,6 @@
 <template>
   <div v-editable="blok"
-       class="col-12 col-sm-6 col-lg-3 pt-4 pt-lg-0">
+       class="w-full  sm:w-6/12 lg:w-3/12 pt-4 pt-lg-0">
     <img alt="image"
          class="fdb-icon"
          :src="blok.icon">

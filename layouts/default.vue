@@ -9,9 +9,9 @@
         :is="blok.component | dashify"
       ></component>
     </div>
-    <!-- <main id="main" role="main" class="body__content">
+    <main id="main" role="main">
       <nuxt/>
-    </main>-->
+    </main>
     <div v-if="layout && layout.footer">
       <div v-if="!layout.footer.length" v-editable="layout">Define footer blocks here</div>
       <component

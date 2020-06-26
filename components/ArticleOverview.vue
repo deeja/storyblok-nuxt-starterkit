@@ -1,8 +1,8 @@
 <template>
   <section v-editable="blok" class="fdb-block">
-    <div class="container">
+    <div class="">
       <div class="row">
-        <div class="col-md-8">
+        <div class="md:w-8/12">
           <h1>{{ blok.headline }}</h1>
 
           <div class="card mb-4" :key="article.id" v-for="article in articles">
@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="md:w-4/12">
           <div class="card my-4">
             <h5 class="card-header">Categories</h5>
             <div class="card-body">

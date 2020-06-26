@@ -1,7 +1,7 @@
 <template>
   <header :class="blok.style.join(' ')"
           v-editable="blok">
-    <div class="container">
+    <div class="">
       <nav class="navbar navbar-expand-md no-gutters">
         <template v-if="blok.logo_in_middle">
 
@@ -15,7 +15,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="col-4 col-md-2 text-right text-md-center order-lg-6">
+          <div class="w-4/12  md:w-2/12 text-right text-md-center order-lg-6">
             <nuxt-link :to="`/${blok.logo_link.cached_url}`"
                        v-if="blok.logo">
               <img :src="blok.logo"
@@ -24,7 +24,7 @@
             </nuxt-link>
           </div>
 
-          <div class="collapse navbar-collapse col-12 col-md-5 order-lg-1"
+          <div class="collapse navbar-collapse w-full  md:w-5/12 order-lg-1"
                :id="`navbar-${blok._uid}`">
             <ul v-if="blok.nav_links && blok.nav_links.length"
                 class="navbar-nav"
@@ -37,7 +37,7 @@
           </div>
 
           <ul v-if="blok.second_nav_links && blok.second_nav_links.length"
-              class="navbar-nav justify-content-end col-sm-5 order-lg-12 d-none d-md-flex">
+              class="navbar-nav justify-content-end sm:w-5/12 order-lg-12 d-none d-md-flex">
             <component :key="blok._uid"
                        v-for="blok in blok.second_nav_links"
                        :blok="blok"
@@ -47,7 +47,7 @@
         </template>
         <template v-if="!blok.logo_in_middle">
 
-          <div class="col-3 text-left">
+          <div class="w-3/12  text-left">
             <nuxt-link :to="`/${blok.logo_link.cached_url}`"
                        v-if="blok.logo">
               <img :src="blok.logo"
@@ -66,7 +66,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse justify-content-center col-md-6"
+          <div class="collapse navbar-collapse justify-content-center md:w-6/12"
                :id="`navbar-${blok._uid}`">
             <ul v-if="blok.nav_links && blok.nav_links.length"
                 class="navbar-nav"
@@ -95,7 +95,7 @@
           </div>
 
           <ul v-if="!blok.button_text && blok.second_nav_links"
-              class="navbar-nav col-3 justify-content-end d-none d-md-flex">
+              class="navbar-nav w-3/12  justify-content-end d-none d-md-flex">
             <component :key="blok._uid"
                         v-for="blok in blok.second_nav_links"
                         :blok="blok"

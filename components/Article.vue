@@ -1,8 +1,8 @@
 <template>
   <section class="fdb-block" v-editable="blok">
-    <div class="container">
+    <div class="">
       <div class="row">
-        <div class="col-8 text-left">
+        <div class="w-8/12  text-left">
           <h2>{{ blok.title }}</h2>
 
           <img
@@ -18,7 +18,7 @@
 
           <markdown :text="blok.long_text"></markdown>
         </div>
-        <div class="col-4" >
+        <div class="w-4/12 " >
           <div v-if="author">
             <h3>Author</h3>
             <div class="d-flex align-items-center mb-2">

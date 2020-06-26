@@ -5,9 +5,9 @@
     :class="blok.section_style.join(' ')"
     :style="backgroundStyles"
   >
-    <div class="container" :class="blok.container_style.join(' ')">
+    <div class :class="blok.container_style.join(' ')">
       <div class="row" :class="blok.row_style.join(' ')">
-        <div class="col-12 col-sm-6" v-if="blok.image && blok.image_position == 'left'">
+        <div class="w-full  sm:w-6/12" v-if="blok.image && blok.image_position == 'left'">
           <img alt="Image" class="img-fluid" :src="blok.image" />
         </div>
 
@@ -53,7 +53,7 @@
           </div>
 
           <div
-            class="col-12 col-sm-4 col-md-6 col-lg-4 m-auto pt-5"
+            class="w-full  sm:w-4/12 md:w-6/12 lg:w-4/12 m-auto pt-5"
             v-if="blok.image && blok.image_position == 'left'"
           >
             <img alt="image" class="img-fluid br-0" :src="blok.image" />
@@ -98,14 +98,14 @@ export default {
     },
     columnStyle() {
       let style = this.blok.column_style.join(" ") + " ";
-      style += this.blok.width.xsmall ? `col-${this.blok.width.xsmall} ` : "";
-      style += this.blok.width.small ? `col-sm-${this.blok.width.small} ` : "";
+      style += this.blok.width.xsmall ? `w-${this.blok.width.xsmall}/12 ` : "";
+      style += this.blok.width.small ? `sm:w-${this.blok.width.small}/12 ` : "";
       style += this.blok.width.medium
-        ? `col-md-${this.blok.width.medium} `
+        ? `md:w-${this.blok.width.medium}/12 `
         : "";
-      style += this.blok.width.large ? `col-lg-${this.blok.width.large} ` : "";
+      style += this.blok.width.large ? `lg:w-${this.blok.width.large}/12 ` : "";
       style += this.blok.width.xlarge
-        ? `col-xl-${this.blok.width.xlarge} `
+        ? `xl:w-${this.blok.width.xlarge}/12 `
         : "";
       return style;
     }
