@@ -1,6 +1,6 @@
 <template>
   <ul v-editable="blok"
-      class="nav"
+      class="flex w-full"
       :class="blok.style.join(' ')">
     <component :key="blok._uid"
                v-for="blok in blok.body"

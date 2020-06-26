@@ -1,14 +1,9 @@
 <template>
-  <li v-editable="blok"
-      class="nav-item"
-      :class="{'active': isActive}">
-    <nuxt-link class="nav-link"
-               :to="`/${blok.link.cached_url}`">
-      <i v-if="blok.icon && blok.icon.icon"
-         :class="`${blok.icon.type} ${blok.icon.icon}`"></i>
-
+  <li v-editable="blok">
+    <nuxt-link :to="`/${blok.link.cached_url}`" class="p-4">      
       <img alt="image"
            :src="blok.image"
+           class=""
            height="40"
            v-if="blok.image">
       {{ blok.name }}
@@ -19,13 +14,6 @@
 <script>
 export default {
   props:{blok: {required: true, type: Object}},
-  computed: {
-    isActive() {
-      if (typeof window !== 'undefined' && window.location.pathname.indexOf(this.blok.link.cached_url) > -1) {
-        return true
-      }
-      return false
-    }
-  }
+  
 }
 </script>
