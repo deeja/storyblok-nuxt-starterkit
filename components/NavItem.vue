@@ -4,7 +4,7 @@
       <img alt="image"
            :src="blok.image"
            
-           height="40"
+           class="h-16"
            v-if="blok.image">
       {{ blok.name }}
     </nuxt-link>

@@ -1,31 +1,29 @@
 <template>
   <section
     v-editable="blok"
-    
+    class="py-32"
     :class="blok.section_style.join(' ')"
     :style="backgroundStyles"
   >
     <div :class="blok.container_style.join(' ')">
-      <div  :class="blok.row_style.join(' ')">
-        <div class="w-full sm:w-6/12 mx-auto" thisone v-if="blok.image && blok.image_position == 'left'">
+      <div class="flex flex-center" :class="blok.row_style.join(' ')">
+        <div
+          class="w-full sm:w-8/12 mx-auto"
+          thisone
+          v-if="blok.image && blok.image_position == 'left'"
+        >
           <img alt="Image" class="img-fluid" :src="blok.image" />
         </div>
 
-        <div :class="columnStyle" class="mx-auto ">
-          <img
-            :alt="blok.icon_alt_text"
-            height="40"
-            class="fdb-icon"
-            :src="blok.icon"
-            v-if="blok.icon"
-          />
+        <div :class="columnStyle" class="mx-auto">
+          <img :alt="blok.icon_alt_text" class="h-16" :src="blok.icon" v-if="blok.icon" />
 
           <p class="mb-5 mt-5" v-if="blok.logo">
-            <img :alt="blok.logo_alt_text" height="40" :src="blok.logo" />
+            <img :alt="blok.logo_alt_text" class="h-16" :src="blok.logo" />
           </p>
 
           <div :class="boxStyle">
-            <h1 class="text-2xl" v-if="blok.headline">{{ blok.headline }}</h1>
+            <h1 class="text-5xl" v-if="blok.headline">{{ blok.headline }}</h1>
 
             <h2 class="text-xl" v-if="blok.headline_2">{{ blok.headline_2 }}</h2>
 
@@ -43,29 +41,29 @@
                 :is="blok.component | dashify"
               ></component>
             </p>
-
           </div>
 
-            <component
-              :key="blok._uid"
-              v-for="blok in blok.buttons"
-              :blok="blok"
-              :is="blok.component | dashify"
-            ></component>
+          <component
+            :key="blok._uid"
+            v-for="blok in blok.buttons"
+            :blok="blok"
+            :is="blok.component | dashify"
+          ></component>
           <div
-            class="w-full  sm:w-4/12 md:w-6/12 lg:w-4/12 m-auto pt-5"
+            class="w-full sm:w-4/12 md:w-6/12 lg:w-4/12 m-auto pt-5"
             v-if="blok.image && blok.image_position == 'left'"
           >
             <img alt="image" class="img-fluid br-0" :src="blok.image" />
           </div>
         </div>
-
-        <component
-          :key="blok._uid"
-          v-for="blok in blok.bottom_body"
-          :blok="blok"
-          :is="blok.component | dashify"
-        ></component>
+        <div :class="columnStyle">
+          <component
+            :key="blok._uid"
+            v-for="blok in blok.bottom_body"
+            :blok="blok"
+            :is="blok.component | dashify"
+          ></component>
+        </div>
       </div>
     </div>
   </section>

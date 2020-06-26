@@ -41,7 +41,7 @@
             <div class="card-body">
               <div class="flex items-center mb-2" v-for="author in authors" :key="author.id">
                 <div class="mr-2">
-                  <img height="30" :src="author.content.image" />
+                  <img class="h-12" :src="author.content.image" />
                 </div>
                 <p>{{ author.content.name }}</p>
               </div>

@@ -18,9 +18,7 @@
           <div class="w-4/12  md:w-2/12 text-right md:text-center ">
             <nuxt-link :to="`/${blok.logo_link.cached_url}`"
                        v-if="blok.logo">
-              <img :src="blok.logo"
-                   :height="blok.logo_height"
-                   alt="Logo">
+              <img :src="blok.logo" class="h-12" alt="Logo">
             </nuxt-link>
           </div>
 
@@ -51,7 +49,7 @@
             <nuxt-link :to="`/${blok.logo_link.cached_url}`"
                        v-if="blok.logo">
               <img :src="blok.logo"
-                   :height="blok.logo_height"
+                   class="h-12"
                    alt="Logo">
             </nuxt-link>
           </div>
