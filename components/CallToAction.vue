@@ -8,14 +8,14 @@
     <div :class="blok.container_style.join(' ')">
       <div class="flex flex-wrap justify-center" :class="blok.row_style.join(' ')">
         <div
-          class="w-full sm:w-8/12 mx-auto"
+          class="w-full sm:w-8/12 mx-auto "
           thisone
           v-if="blok.image && blok.image_position == 'left'"
         >
           <img alt="Image" class="img-fluid" :src="blok.image" />
         </div>
 
-        <div :class="columnStyle" class="mx-auto">
+        <div :class="columnStyle" class="mx-auto bg-white p-2  ">
           <img :alt="blok.icon_alt_text" class="h-16" :src="blok.icon" v-if="blok.icon" />
 
           <p class="mb-5 mt-5" v-if="blok.logo">
