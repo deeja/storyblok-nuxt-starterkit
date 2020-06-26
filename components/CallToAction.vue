@@ -80,9 +80,8 @@ export default {
   },
   computed: {
     backgroundStyles() {
-      const resized = resizeImage(this.blok.background, "0x400");
       return {
-        backgroundImage: `url(${resized})`,
+        backgroundImage: `url(${this.blok.background})`,
         "background-repeat": "no-repeat",
         "background-size": "cover",
         "background-position": "center center"
