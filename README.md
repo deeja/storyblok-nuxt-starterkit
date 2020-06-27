@@ -120,10 +120,9 @@ If you leave this repo as a git secondary remote, you will be able to pull in ch
 
 ### Tailwind
 Tailwind usually purges all unused css classes within it's library on production build.
-I have disabled that in the `tailwind.config.js` for this project.
-The issue is when you are using dynamically added classes. As Tailwind won't see them, it will purge those classes and the site will look bad.
+Dynamic classes must be whitelisted in the `tailwind.config.js` for this project or they will be purged by PostCSS
 
-You can whitelist classes. https://github.com/FullHuman/purgecss-docs/blob/master/whitelisting.md
+ https://github.com/FullHuman/purgecss-docs/blob/master/whitelisting.md
 
 
 
