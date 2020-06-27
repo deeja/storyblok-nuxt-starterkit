@@ -25,6 +25,10 @@ export const mutations = {
     }
     state.draftMode = useDraftMode;
   },
+  CLEAR_STORIES(state){
+    console.log(`CLEARING ${Object.keys(state.stories).length} STORY ENTRIES`)
+    state.stories = {};
+  },
   /**
    * Set the cache
    * https://www.storyblok.com/docs/api/content-delivery#topics/cache-invalidation
