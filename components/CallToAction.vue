@@ -79,9 +79,13 @@ export default {
   },
   computed: {
     backgroundStyles() {
-      const background = this.blok.background;
+      let background = this.blok.background;
       if (!background){
         return {};
+      }
+
+      if (!background.includes(".svg")){
+        background = this.resizeBackground(background)
       }
       return {
         backgroundImage: `url(${background})`,
