@@ -5,7 +5,7 @@
   "author": "Dominik Angerer <dominikangerer1@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt --spa",
     "generate": "nuxt build --target static && nuxt export",
     "build": "nuxt build",
     "start": "nuxt start",
