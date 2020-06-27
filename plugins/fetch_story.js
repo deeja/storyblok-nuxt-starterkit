@@ -3,7 +3,7 @@ export default function({ store, route }) {
     return;
   }
 
-  if (!store.getters.getStoryByRoute(route)) {
+  if (store.getters.draftMode || !store.getters.getStoryByRoute(route)) {
     return store.dispatch("fetchStory", route);
   }
 }

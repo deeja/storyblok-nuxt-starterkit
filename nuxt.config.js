@@ -46,7 +46,13 @@ export default {
     "@/plugins/content-types",
     "@/plugins/filters",
     "@/plugins/components",
-    "@/plugins/helper"
+    "@/plugins/helper",
+    "@/plugins/handle_generate_payload",
+    "@/plugins/cache_version",
+    "@/plugins/enable_draft_mode",
+    "@/plugins/fetch_layout",
+    "@/plugins/fetch_story",
+    "@/plugins/fetch_menu_links"
   ],
   /*
    ** Auto import components
@@ -75,12 +81,7 @@ export default {
   ],
   router: {
     middleware: [
-      "storyblok/handle_generate_payload",
-      "storyblok/cache_version",
-      "storyblok/enable_draft_mode",
-      "storyblok/fetch_layout",
-      "storyblok/fetch_story",
-      "storyblok/fetch_menu_links"
+  
     ]
   },
   /*
