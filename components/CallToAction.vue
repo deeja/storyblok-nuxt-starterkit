@@ -1,21 +1,20 @@
 <template>
   <div
     v-editable="blok"
-    class="py-10 mb-2 text-center"
+    class="py-10 mb-2"
     :class="blok.section_style.join(' ')"
     :style="backgroundStyles"
   >
     <div :class="blok.container_style.join(' ')">
-      <div class="flex flex-wrap justify-center" :class="blok.row_style.join(' ')">
+      <div class="flex flex-wrap" :class="rowStyle">
         <div
-          class="w-full sm:w-8/12 mx-auto "
-          thisone
+          class="w-full sm:w-6/12"
           v-if="blok.image && blok.image_position == 'left'"
         >
           <img alt="Image" class="img-fluid" :src="blok.image" />
         </div>
 
-        <div :class="columnStyle" class="mx-auto bg-white p-2  ">
+        <div :class="columnStyle" class="bg-white p-2  ">
           <img :alt="blok.icon_alt_text" class="h-16 inline" :src="blok.icon" v-if="blok.icon" />
 
           <p class="mb-5 mt-5" v-if="blok.logo">
@@ -90,6 +89,10 @@ export default {
         "background-size": "cover",
         "background-position": "center center"
       };
+    },
+    rowStyle(){
+      const styles = this.blok.row_style.join(' ');
+      return styles.replace("justify-content-", "justify-").replace("align-items-", "items-");
     },
     boxStyle() {
       if (this.blok.in_box) {
