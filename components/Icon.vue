@@ -2,8 +2,7 @@
   <a v-editable="blok"
      :href="blok.link.cached_url"
      class="mr-2 ml-2">
-    <i :class="`${blok.icon.type} ${blok.icon.icon}`">
-    </i>
+    [{{blok.icon.type}} {{blok.icon.icon}}]
   </a>
 </template>
 

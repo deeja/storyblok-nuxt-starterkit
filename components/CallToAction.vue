@@ -1,7 +1,7 @@
 <template>
-  <section
+  <div
     v-editable="blok"
-    class="py-10 text-center"
+    class="py-10 mb-2 text-center"
     :class="blok.section_style.join(' ')"
     :style="backgroundStyles"
   >
@@ -16,10 +16,10 @@
         </div>
 
         <div :class="columnStyle" class="mx-auto bg-white p-2  ">
-          <img :alt="blok.icon_alt_text" class="h-16" :src="blok.icon" v-if="blok.icon" />
+          <img :alt="blok.icon_alt_text" class="h-16 inline" :src="blok.icon" v-if="blok.icon" />
 
           <p class="mb-5 mt-5" v-if="blok.logo">
-            <img :alt="blok.logo_alt_text" class="h-16" :src="blok.logo" />
+            <img :alt="blok.logo_alt_text" class="h-16 inline" :src="blok.logo" />
           </p>
 
           <div :class="boxStyle">
@@ -66,7 +66,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -80,8 +80,12 @@ export default {
   },
   computed: {
     backgroundStyles() {
+      const background = this.blok.background;
+      if (!background){
+        return {};
+      }
       return {
-        backgroundImage: `url(${this.blok.background})`,
+        backgroundImage: `url(${background})`,
         "background-repeat": "no-repeat",
         "background-size": "cover",
         "background-position": "center center"

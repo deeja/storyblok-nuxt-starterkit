@@ -2,7 +2,7 @@
   <section 
            v-editable="blok">
     <div >
-      <div class="row items-center">
+      <div class="flex justify-center">
         <div class="w-full  sm:w-3/12 text-center"
              v-if="blok.style == 'right'">
           <a class="button-standard"

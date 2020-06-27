@@ -1,7 +1,6 @@
 <template>
   <div v-editable="blok">
-    <img alt="image"
-         class="fdb-icon"
+    <img alt="image" class="h-12 inline-block"         
          :src="blok.image">
     <h3>{{ blok.headline }}</h3>
     <p>{{ blok.text }}</p>

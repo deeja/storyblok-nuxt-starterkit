@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="w-full flex  flex-wrap overflow-hidden">
+  <div v-editable="blok" class="w-full flex flex-wrap justify-around overflow-hidden">
     <component
       :key="blok._uid"
       v-for="blok in blok.body"
