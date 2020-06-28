@@ -2,32 +2,27 @@ const BASE_STORY_URL = "cdn/stories/";
 const BASE_LINKS_URL = "cdn/links";
 const BASE_SPACES_URL = "cdn/spaces/me/";
 
-/**
-@summary Default Store
-https://old.reddit.com/r/vuejs/comments/9bao0t/recommended_approach_to_lazy_loading_with_vuex/e52y42m/
-*/
-export const state = () => ({
+const stateBuilder  = () => ({
   cacheVersion: 0,
   draftMode: false,
   stories: {},
   menuLinks: null
 });
 
+export const state = stateBuilder;
+
 export const mutations = {
-  /**
-   *
+  /** Sets the Site to draft mode, meaning pages are the latest unpublished versions.
+   *  State is cleared (un-does the state.js loading) to allow the editing of stories
    * @param {*} state
    * @param {*} useDraftMode set draft mode true = on
    */
   SET_DRAFT_MODE(state, useDraftMode) {
     if (useDraftMode) {
-      console.log("DRAFT MODE ENABLED");
+      console.log("DRAFT MODE ENABLED - CLEARING STATE");
+      Object.assign(state, stateBuilder());
     }
     state.draftMode = useDraftMode;
-  },
-  CLEAR_STORIES(state){
-    console.log(`CLEARING ${Object.keys(state.stories).length} STORY ENTRIES`)
-    state.stories = {};
   },
   /**
    * Set the cache
@@ -39,7 +34,6 @@ export const mutations = {
     state.cacheVersion = version;
   },
   ADD_STORY(state, story) {
-
     // TODO: handle translated_slugs
     const updated = {
       [getStorySlug(story.full_slug)]: story,
