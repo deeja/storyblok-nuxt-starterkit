@@ -46,12 +46,10 @@ export default {
     "@/plugins/content-types",
     "@/plugins/filters",
     "@/plugins/components",
-    "@/plugins/helper",
     "@/plugins/handle_generate_payload",
     "@/plugins/cache_version",
     "@/plugins/enable_draft_mode",
     "@/plugins/fetch_layout",
-    "@/plugins/fetch_story",
     "@/plugins/fetch_menu_links"
   ],
   /*
@@ -80,8 +78,8 @@ export default {
     ]
   ],
   router: {
-    middleware: [
-  
+    middleware: [ 
+      "storyblok/fetch_story",
     ]
   },
   /*
