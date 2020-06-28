@@ -46,9 +46,15 @@ export const mutations = {
   SET_MENU_LINKS(state, menuLinks) {
     state.menuLinks = menuLinks;
   },
+  /**
+   * Replaces stories as they are being edited
+   * @param {*} state 
+   * @param {*} story 
+   */
   UPDATE_STORY(state, story) {
     const stories = state.stories;
-    for (const key in stories) {
+    // replace stories in the array with the same id
+    for (const key in stories) {      
       if (stories[key].id === story.id) {
         Object.assign(stories[key], story);
       }

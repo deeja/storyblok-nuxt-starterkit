@@ -6,12 +6,10 @@
  * @param {*} component
  * @param {*} story
  */
-export const reactToEdits = function(component, story) {
+export const reactToEdits = function(component) {
   component.$storybridge.on(["input", "published", "change"], event => {
     if (event.action == "input") {
-      if (event.story.id === story.id) {
-        component.$store.commit("UPDATE_STORY", event.story);
-      }
+      component.$store.commit("UPDATE_STORY", event.story);      
     } else {
       component.$nuxt.$router.go({
         path: component.$nuxt.$router.currentRoute,
