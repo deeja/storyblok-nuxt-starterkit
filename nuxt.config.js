@@ -30,15 +30,12 @@ export default {
           "A starter kit for building a JAMStack + Headless CMS solution; built with Nuxt.js and Storyblok"
       }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   /*
-  ** Global CSS
-  */
-  css: [
-  ],
+   ** Global CSS
+   */
+  css: [],
   /*
    ** Basic Components and Content Type setup
    */
@@ -49,7 +46,7 @@ export default {
     "@/plugins/handle_generate_payload",
     "@/plugins/cache_version",
     "@/plugins/enable_draft_mode",
-    "@/plugins/fetch_layout",
+    "@/plugins/fetch_layout"
   ],
   /*
    ** Auto import components
@@ -57,15 +54,15 @@ export default {
    */
   components: true,
   /*
-  ** Nuxt.js dev-modules
-  */
+   ** Nuxt.js dev-modules
+   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss',
+    "@nuxtjs/tailwindcss"
   ],
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     [
       "storyblok-nuxt",
@@ -77,9 +74,7 @@ export default {
     ]
   ],
   router: {
-    middleware: [ 
-      "storyblok/fetch_story",
-    ]
+    middleware: ["storyblok/fetch_story"]
   },
   /*
    ** Generate Routes via Storybloks Links API.
