@@ -1,6 +1,4 @@
-import {isEditMode} from './../helpers/helper'
-
-import { reactToEdits } from "@/helpers/Storyblok";
+import { reactToEdits, isEditMode } from "@/helpers/Storyblok";
 
 export default function({ app, store , route, enablePreview, $storybridge}) {
   // check if in draft mode using query string storyblok token
