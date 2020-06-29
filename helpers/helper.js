@@ -11,17 +11,21 @@ export function resize(str, param) {
     : str.replace(/a.storyblok.com/g, "img2.storyblok.com/" + param);
 }
 
+export const generateToken = (timestamp, spaceId, accessToken) => {
+  return crypto
+    .createHash("sha1")
+    .update(`${spaceId}:${accessToken}:${timestamp}`)
+    .digest("hex");    
+}
+
 export function isEditMode(app, query) {
   // Want to know more about this? https://www.storyblok.com/docs/Guides/storyblok-latest-js
-  const space_id = query["_storyblok_tk[space_id]"];
+  const spaceId = +query["_storyblok_tk[space_id]"];
   const timestamp = +query["_storyblok_tk[timestamp]"];
   const providedToken = query["_storyblok_tk[token]"];
 
   // hash it using sha1
-  const generatedToken = crypto
-    .createHash("sha1")
-    .update(`${space_id}:${app.$storyapi.accessToken}:${timestamp}`)
-    .digest("hex");
+  const generatedToken = generateToken(timestamp, spaceId, app.$storyapi.accessToken)
 
   // check if the controlToken is equal to the validation token passed as param
   // and if timestamp is in the last 60 minutes.
