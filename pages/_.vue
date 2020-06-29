@@ -10,18 +10,12 @@
   </div>
 </template>
 <script>
-import { reactToEdits } from "@/helpers/Storyblok";
 export default {
   data() {
     return {story:null}
   },  
   validate({ store, route }) {
     return store.getters.getStoryByRoute(route);
-  },
-  mounted() {
-    if (process.client && this.$store.state.draftMode) {
-      reactToEdits(this);
-    }
   },
   async fetch() {
     this.story = this.$store.getters.getStoryByRoute(this.$route);

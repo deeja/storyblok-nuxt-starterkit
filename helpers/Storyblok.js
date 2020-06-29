@@ -6,17 +6,18 @@
  * @param {*} component
  * @param {*} story
  */
-export const reactToEdits = function(component) {
-  component.$storybridge.on(["input", "published", "change"], event => {
+export const reactToEdits = function(storybridge, store, router) {
+  storybridge.on(["input", "published", "change"], event => {
     if (event.action == "input") {
-      component.$store.commit("UPDATE_STORY", event.story);      
+      store.commit("UPDATE_STORY", event.story);            
     } else {
-      component.$nuxt.$router.go({
-        path: component.$nuxt.$router.currentRoute,
+      router.go({
+        path: router.currentRoute,
         force: true
       });
     }
   });
+  console.log("STORYBRIDGE UP")
 };
 
 export const resizeImage =  (image, sizeOptions) => {
