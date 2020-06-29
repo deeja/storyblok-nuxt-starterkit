@@ -3,9 +3,10 @@ import { reactToEdits, isEditMode } from "@/helpers/Storyblok";
 export default function({ app, store , route, enablePreview, $storybridge}) {
   // check if in draft mode using query string storyblok token
   const edit = isEditMode(app, route.query)
+  console.log("EDIT? ", edit)
   if (edit) {    
     if (process.client) {
-      reactToEdits($storybridge, store, app.router, route.query);
+      reactToEdits($storybridge, store, app, route.query);
     }
     // enable preview if exists https://nuxtjs.org/blog/going-full-static/
     enablePreview && enablePreview(); 
