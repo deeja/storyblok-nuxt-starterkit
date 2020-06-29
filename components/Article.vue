@@ -3,8 +3,8 @@
     <div class="w-full text-left">
       <h2 class="text-4xl">{{ blok.title }}</h2>
     </div>
-    <div class="flex">
-      <div class="w-8/12 text-left">
+    <div class="flex flex-wrap">
+      <div class="w-full md:w-8/12 text-left">
         <img
           :src="blok.teaser_image | resize('800x0')"
           class="img-fluid"
@@ -18,15 +18,13 @@
 
         <markdown :text="blok.long_text"></markdown>
       </div>
-      <div class="md:w-4/12 px-2">
+      <div class="w-full md:w-4/12 px-2 pt-2 md:pt-0">
         <div class="border rounded pb-2 mb-2">
           <h4 class="bg-gray-100 border-b pl-2">Categories</h4>
-
           <ul class="pl-2">
             <li v-for="category in categories" :key="category.id">{{ category.name }}</li>
           </ul>
         </div>
-
         <div class="border rounded pb-2" v-if="author">
           <h4 class="bg-gray-100 border-b pl-2">Author</h4>
           <div class="flex items-center mb-2 p-2">

@@ -1,6 +1,6 @@
 <template>
-  <li v-editable="blok">
-    <nuxt-link :to="`/${blok.link.cached_url}`" class="p-4">      
+  <div v-editable="blok">
+    <nuxt-link :to="`/${blok.link.cached_url}`" class="inline-block">      
       <img alt="image"
            :src="blok.image"
            
@@ -8,7 +8,7 @@
            v-if="blok.image">
       {{ blok.name }}
     </nuxt-link>
-  </li>
+  </div>
 </template>
 
 <script>

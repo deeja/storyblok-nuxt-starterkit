@@ -3,8 +3,8 @@
     <div class="full-width">
       <h1>{{ blok.headline }}</h1>
     </div>
-    <div class="flex">
-      <div class="md:w-8/12">
+    <div class="flex flex-wrap">
+      <div class="w-full md:w-8/12">
         <div class="mb-4 border rounded" :key="article.id" v-for="article in articles">
           <img
             v-if="article.content.teaser_image"
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div class="md:w-4/12 px-2">
+      <div class="w-full md:w-4/12 px-2">
         <div class="border rounded pb-2 mb-2">
           <h4 class="bg-gray-100 border-b pl-2">Categories</h4>
 

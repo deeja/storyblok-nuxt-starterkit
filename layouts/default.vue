@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="px-1">
     <div v-if="layout && layout.header">
       <div v-if="!layout.header.length" v-editable="layout">Define header blocks here</div>
       <component
@@ -9,7 +9,7 @@
         :is="blok.component | dashify"
       ></component>
     </div>
-    <main id="main" role="main" class="w-2/3 mx-auto">
+    <main id="main" role="main" class="lg:w-2/3 lg:mx-auto">
       <nuxt/>
     </main>
     <div v-if="layout && layout.footer">
