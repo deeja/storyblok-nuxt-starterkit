@@ -62,16 +62,24 @@ $ yarn dev
 
 ```
 
-### Building locally to preview the production build
+The static production ready version of the site is able to be run locally.
 
 ``` bash
-# generate static project
-# this is the only command you will need to run if deploying to netlify, vercel, or other JAMStack style provider.
-$ yarn generate # this is now an alias command for nuxt build --target static && nuxt export
+# to build, export and then serve up the built files on http://localhost:3000
+$ yarn static
 
-# preview built static project
+# or to just build and export
+$ yarn generate
+
+# or to run each command individually 
+$ yarn build --static
+$ yarn export
 $ yarn serve
 ```
+
+There are some issues in making the static version "non-static" in edit mode via Storyblok.
+These are being worked on where found. 
+
 
 ### Editing content
 This is the part where it all comes together. 
