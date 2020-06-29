@@ -12,11 +12,9 @@
 <script>
 import { reactToEdits } from "@/helpers/Storyblok";
 export default {
-  computed: {
-    story() {
-      return this.$store.getters.getStoryByRoute(this.$route);
-    }
-  },
+  data() {
+    return {story:null}
+  },  
   validate({ store, route }) {
     return store.getters.getStoryByRoute(route);
   },
@@ -24,6 +22,9 @@ export default {
     if (process.client && this.$store.state.draftMode) {
       reactToEdits(this);
     }
+  },
+  async fetch() {
+    this.story = this.$store.getters.getStoryByRoute(this.$route);
   }
 };
 </script>
