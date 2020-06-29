@@ -50,7 +50,6 @@ export default {
     "@/plugins/cache_version",
     "@/plugins/enable_draft_mode",
     "@/plugins/fetch_layout",
-    "@/plugins/fetch_menu_links"
   ],
   /*
    ** Auto import components

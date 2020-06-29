@@ -5,8 +5,7 @@ const BASE_SPACES_URL = "cdn/spaces/me/";
 const stateBuilder  = () => ({
   cacheVersion: 0,
   draftMode: false,
-  stories: {},
-  menuLinks: null
+  stories: {}  
 });
 
 export const state = stateBuilder;
@@ -42,9 +41,6 @@ export const mutations = {
       ...state.stories
     };
     state.stories = updated;
-  },
-  SET_MENU_LINKS(state, menuLinks) {
-    state.menuLinks = menuLinks;
   },
   /**
    * Replaces stories as they are being edited
@@ -118,39 +114,12 @@ export const actions = {
       .catch(err => {
         console.error(err);
       });
-  },
-  fetchMenuLinks({ commit, state }) {
-    return this.$storyapi
-      .get(BASE_LINKS_URL, getRequestOptions(state))
-      .then(res => res.data)
-      .then(data => {
-        const linkArray = Object.values(data.links);
-        const links = linkArray.map(l => {
-          const { real_path, id, parent_id, is_folder, name, position } = l;
-          return {
-            slug: real_path,
-            id,
-            parent_id,
-            is_folder,
-            name,
-            position
-          };
-        });
-
-        commit("SET_MENU_LINKS", links);
-      })
-      .catch(error => {
-        console.error(error);
-      });
   }
 };
 
 export const getters = {
   getCacheVersion(state) {
     return state.cacheVersion;
-  },
-  getMenuLinks(state) {
-    return state.menuLinks;
   },
   getStoryByRoute: state => route => {
     const storyPath = getStoryPath(route);

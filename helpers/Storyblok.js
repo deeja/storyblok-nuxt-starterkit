@@ -47,24 +47,6 @@ const buildRedirectLocation = (app, query) => {
   return currentRoutePath + "?" + searchParams.toString();
 }
 
-/**
- * https://stackoverflow.com/a/40732240/59532
- * @param {*} links
- */
-const buildLinkTree = dataset => {
-  let hashTable = Object.create(null);
-  dataset.forEach(
-    aData => (hashTable[aData.id] = { ...aData, childNodes: [] })
-  );
-  let dataTree = [];
-  dataset.forEach(aData => {
-    if (aData.parent_id)
-      hashTable[aData.parent_id].childNodes.push(hashTable[aData.id]);
-    else dataTree.push(hashTable[aData.id]);
-  });
-  return dataTree;
-};
-
 export const generateToken = (timestamp, spaceId, accessToken) => {
   return crypto
     .createHash("sha1")
