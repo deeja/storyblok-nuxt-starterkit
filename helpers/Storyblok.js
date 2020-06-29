@@ -6,15 +6,17 @@
  * @param {*} component
  * @param {*} story
  */
-export const reactToEdits = function(storybridge, store, router) {
+export const reactToEdits = function(storybridge, store, router, query) {
+  // need the credentials on redirect
+  const storyBlokQuery = { ...query };
   storybridge.on(["input", "published", "change"], event => {
     if (event.action == "input") {
       store.commit("UPDATE_STORY", event.story);            
     } else {
-      router.go({
-        path: router.currentRoute,
-        force: true
-      });
+      // force reload on save to whatever page has been routed to (not current url as that stays the same)
+      const searchParams = new URLSearchParams();
+      Object.keys(storyBlokQuery).forEach(key => searchParams.append(key, storyBlokQuery[key]));
+      window.location = router.currentRoute.path + "?"+ searchParams.toString();
     }
   });
   console.log("STORYBRIDGE UP")
