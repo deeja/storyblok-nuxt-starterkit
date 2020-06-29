@@ -1,7 +1,7 @@
 <template>
   <div
     v-editable="blok"
-    class="py-10 mb-2"
+    class="md:py-10"
     :class="blok.section_style.join(' ')"
     :style="backgroundStyles"
   >
@@ -14,7 +14,7 @@
           <img alt="Image" class="img-fluid" :src="blok.image" />
         </div>
 
-        <div :class="columnStyle" class="bg-white p-2  ">
+        <div :class="columnStyle" class="bg-white p-2 md:rounded-md  ">
           <img :alt="blok.icon_alt_text" class="h-16 inline" :src="blok.icon" v-if="blok.icon" />
 
           <p class="mb-5 mt-5" v-if="blok.logo">

@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:px-5 md:p-1">
+  <div>
     <div v-if="!story">No story found</div>
     <component
       v-else-if="story.content.component"
