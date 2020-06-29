@@ -1,6 +1,6 @@
 <template>
   <div v-editable="blok">
-    <nuxt-link :to="`/${blok.link.cached_url}`" class="inline-block">      
+    <nuxt-link :to="`/${blok.link.cached_url}`" class="inline-block pr-1 mr-1 border-r border-white">      
       <img alt="image"
            :src="blok.image"
            
