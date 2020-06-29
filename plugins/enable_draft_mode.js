@@ -2,8 +2,7 @@ import { reactToEdits, isEditMode } from "@/helpers/Storyblok";
 
 export default function({ app, store , route, enablePreview, $storybridge}) {
   // check if in draft mode using query string storyblok token
-  const edit = isEditMode(app, route.query)
-  console.log("EDIT? ", edit)
+  const edit = isEditMode(app, route.query)  
   if (edit) {    
     if (process.client) {
       reactToEdits($storybridge, store, app, route.query);

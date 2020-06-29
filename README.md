@@ -106,6 +106,28 @@ Set up a webhook to keep the generated files up to date with latest content.
 1. Create a build webhook on Netlify `Build & Deploy -> Add build hook -> master`
 1. Copy build webhook url to Storyblok `General -> Webhooks -> Story Published & Unpublished` 
 
+### Possible deployment strategies
+
+#### Single site
+If you want one site for both editing and delivery
+- `yarn generate`
+- Use the preview key
+
+Downsides to this is that your preview key is exposed. It may or may not be a concern to you. 
+
+#### Separate Edit and Delivery sites
+- Delivery site
+    - `yarn generate`
+    - Use the PUBLISHED key
+- Editing site
+    - `yarn build --spa`
+    - `yarn export`
+    - Use the PREVIEW key
+
+No static generation means everything is loaded dynamically, and should be up-to date. 
+Another benefit is that the preview key is not exposed.
+
+
 
 ## NOTES 
 
@@ -131,6 +153,8 @@ Tailwind usually purges all unused css classes within it's library on production
 Dynamic classes must be whitelisted in the `tailwind.config.js` for this project or they will be purged by PostCSS
 
  https://github.com/FullHuman/purgecss-docs/blob/master/whitelisting.md
+
+
 
 
 
