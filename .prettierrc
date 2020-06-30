@@ -1,4 +1,8 @@
 {
-  "semi": false,
-  "singleQuote": true
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "endOfLine": "auto",
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": false
 }
