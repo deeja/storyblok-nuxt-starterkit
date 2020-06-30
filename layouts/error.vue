@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-  props: ["error"],
-  head: { title: "There was an error. " }
+  props: { error: { type: Object, required: true } },
+  head: { title: 'There was an error. ' }
 };
 </script>

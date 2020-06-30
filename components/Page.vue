@@ -1,11 +1,16 @@
 <template>
   <div v-editable="blok" class="page">
-    <component :key="blok._uid" v-for="blok in blok.body" :blok="blok" :is="blok.component | dashify"></component>
+    <component
+      :is="child.component | dashify"
+      v-for="child in blok.body"
+      :key="child._uid"
+      :blok="child"
+    ></component>
   </div>
 </template>
 
 <script>
 export default {
-  props:{blok: {required: true, type: Object}}
-}
+  props: { blok: { required: true, type: Object } }
+};
 </script>

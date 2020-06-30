@@ -5,10 +5,10 @@
     </div>
     <div class="flex flex-wrap justify-evenly text-center w-full">
       <component
-        :key="blok._uid"
-        v-for="blok in blok.logos"
-        :blok="blok"
-        :is="blok.component | dashify"
+        :is="child.component | dashify"
+        v-for="child in blok.logos"
+        :key="child._uid"
+        :blok="child"
       ></component>
     </div>
   </div>

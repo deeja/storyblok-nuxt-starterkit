@@ -1,10 +1,13 @@
 <template>
-  <div v-editable="blok" class="w-full flex flex-wrap justify-around overflow-hidden">
+  <div
+    v-editable="blok"
+    class="w-full flex flex-wrap justify-around overflow-hidden"
+  >
     <component
-      :key="blok._uid"
-      v-for="blok in blok.body"
-      :blok="blok"
-      :is="blok.component | dashify"
+      :is="child.component | dashify"
+      v-for="child in blok.body"
+      :key="child._uid"
+      :blok="child"
     ></component>
   </div>
 </template>

@@ -1,105 +1,129 @@
 <template>
-  <header :class="blok.style.join(' ')"
-          v-editable="blok">
-    <div >
+  <header v-editable="blok" :class="blok.style.join(' ')">
+    <div>
       <nav class="navbar navbar-expand-md no-gutters">
         <template v-if="blok.logo_in_middle">
-
-          <button class="navbar-toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  :data-target="`#navbar-${blok._uid}`"
-                  :aria-controls="`navbar-${blok._uid}`"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            :data-target="`#navbar-${blok._uid}`"
+            :aria-controls="`navbar-${blok._uid}`"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="w-4/12  md:w-2/12 text-right md:text-center ">
-            <nuxt-link :to="`/${blok.logo_link.cached_url}`"
-                       v-if="blok.logo">
-              <img :src="blok.logo" class="h-12" alt="Logo">
+          <div class="w-4/12 md:w-2/12 text-right md:text-center">
+            <nuxt-link v-if="blok.logo" :to="`/${blok.logo_link.cached_url}`">
+              <img :src="blok.logo" class="h-12" alt="Logo" />
             </nuxt-link>
           </div>
 
-          <div class="collapse navbar-collapse w-full md:w-5/12"
-               :id="`navbar-${blok._uid}`">
-            <ul v-if="blok.nav_links && blok.nav_links.length"
-                class="navbar-nav"
-                :class="blok.main_nav_style.join(' ')">
-              <component :key="blok._uid"
-                         v-for="blok in blok.nav_links"
-                         :blok="blok"
-                         :is="blok.component | dashify"></component>
+          <div
+            :id="`navbar-${blok._uid}`"
+            class="collapse navbar-collapse w-full md:w-5/12"
+          >
+            <ul
+              v-if="blok.nav_links && blok.nav_links.length"
+              class="navbar-nav"
+              :class="blok.main_nav_style.join(' ')"
+            >
+              <component
+                :is="child.component | dashify"
+                v-for="child in blok.nav_links"
+                :key="child._uid"
+                :blok="child"
+              ></component>
             </ul>
           </div>
 
-          <ul v-if="blok.second_nav_links && blok.second_nav_links.length"
-              class="navbar-nav justify-content-end sm:w-5/12 none md:flex">
-            <component :key="blok._uid"
-                       v-for="blok in blok.second_nav_links"
-                       :blok="blok"
-                       :is="blok.component | dashify"></component>
+          <ul
+            v-if="blok.second_nav_links && blok.second_nav_links.length"
+            class="navbar-nav justify-content-end sm:w-5/12 none md:flex"
+          >
+            <component
+              :is="child.component | dashify"
+              v-for="child in blok.second_nav_links"
+              :key="child._uid"
+              :blok="child"
+            ></component>
           </ul>
-
         </template>
         <template v-if="!blok.logo_in_middle">
-
           <div class="w-3/12 text-left">
-            <nuxt-link :to="`/${blok.logo_link.cached_url}`"
-                       v-if="blok.logo">
-              <img :src="blok.logo"
-                   class="h-12"
-                   alt="Logo">
+            <nuxt-link v-if="blok.logo" :to="`/${blok.logo_link.cached_url}`">
+              <img :src="blok.logo" class="h-12" alt="Logo" />
             </nuxt-link>
           </div>
 
-          <button class="navbar-toggler"
-                  type="button"
-                  data-toggle="collapse"
-                  :data-target="`#navbar-${blok._uid}`"
-                  :aria-controls="`navbar-${blok._uid}`"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            :data-target="`#navbar-${blok._uid}`"
+            :aria-controls="`navbar-${blok._uid}`"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse justify-content-center md:w-6/12"
-               :id="`navbar-${blok._uid}`">
-            <ul v-if="blok.nav_links && blok.nav_links.length"
-                class="navbar-nav"
-                :class="blok.main_nav_style.join(' ')">
-              <component :key="blok._uid"
-                         v-for="blok in blok.nav_links"
-                         :blok="blok"
-                         :is="blok.component | dashify"></component>
+          <div
+            :id="`navbar-${blok._uid}`"
+            class="collapse navbar-collapse justify-content-center md:w-6/12"
+          >
+            <ul
+              v-if="blok.nav_links && blok.nav_links.length"
+              class="navbar-nav"
+              :class="blok.main_nav_style.join(' ')"
+            >
+              <component
+                :is="child.component | dashify"
+                v-for="child in blok.nav_links"
+                :key="child._uid"
+                :blok="child"
+              ></component>
             </ul>
           </div>
 
-          <div class="collapse navbar-collapse"
-               :id="`navbar-${blok._uid}`"
-               v-if="blok.button_text">
-            <ul v-if="blok.second_nav_links && blok.second_nav_links.length"
-                class="navbar-nav ml-auto justify-content-end">
-              <component :key="blok._uid"
-                         v-for="blok in blok.second_nav_links"
-                         :blok="blok"
-                         :is="blok.component | dashify"></component>
+          <div
+            v-if="blok.button_text"
+            :id="`navbar-${blok._uid}`"
+            class="collapse navbar-collapse"
+          >
+            <ul
+              v-if="blok.second_nav_links && blok.second_nav_links.length"
+              class="navbar-nav ml-auto justify-content-end"
+            >
+              <component
+                :is="child.component | dashify"
+                v-for="child in blok.second_nav_links"
+                :key="child._uid"
+                :blok="child"
+              ></component>
             </ul>
 
-            <a class="button-standard ml-md-3" :href="blok.button_link.cached_url">
+            <a
+              class="button-standard ml-md-3"
+              :href="blok.button_link.cached_url"
+            >
               {{ blok.button_text }}
             </a>
           </div>
 
-          <ul v-if="!blok.button_text && blok.second_nav_links"
-              class="navbar-nav w-3/12  justify-content-end d-none md:flex">
-            <component :key="blok._uid"
-                        v-for="blok in blok.second_nav_links"
-                        :blok="blok"
-                        :is="blok.component | dashify"></component>
+          <ul
+            v-if="!blok.button_text && blok.second_nav_links"
+            class="navbar-nav w-3/12 justify-content-end d-none md:flex"
+          >
+            <component
+              :is="child.component | dashify"
+              v-for="child in blok.second_nav_links"
+              :key="child._uid"
+              :blok="child"
+            ></component>
           </ul>
-
         </template>
       </nav>
     </div>
@@ -108,6 +132,6 @@
 
 <script>
 export default {
-  props:{blok: {required: true, type: Object}}
-}
+  props: { blok: { required: true, type: Object } }
+};
 </script>

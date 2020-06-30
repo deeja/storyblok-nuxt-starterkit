@@ -6,10 +6,10 @@
     <div class="flex flex-wrap">
       <div class="w-full md:w-8/12 text-left">
         <img
+          v-if="blok.teaser_image"
           :src="blok.teaser_image | resize('800x0')"
           class="img-fluid"
           alt="image"
-          v-if="blok.teaser_image"
         />
 
         <p class="m-1">
@@ -22,10 +22,12 @@
         <div class="border rounded pb-2 mb-2">
           <h4 class="bg-gray-100 border-b pl-2">Categories</h4>
           <ul class="pl-2">
-            <li v-for="category in categories" :key="category.id">{{ category.name }}</li>
+            <li v-for="category in categories" :key="category.id">
+              {{ category.name }}
+            </li>
           </ul>
         </div>
-        <div class="border rounded pb-2" v-if="author">
+        <div v-if="author" class="border rounded pb-2">
           <h4 class="bg-gray-100 border-b pl-2">Author</h4>
           <div class="flex items-center mb-2 p-2">
             <div class="mr-2 h-8">
@@ -40,21 +42,21 @@
 </template>
 
 <script>
-const startsWith = "categories/";
+const startsWith = 'categories/';
 
 export default {
   props: { blok: { required: true, type: Object } },
-  data() {
-    return { categories: [], author: null };
-  },
   async fetch() {
-    const fetchStories = await this.$store.dispatch("fetchStories", startsWith);
+    await this.$store.dispatch('fetchStories', startsWith);
     this.categories = this.$store.getters.getStories(startsWith);
 
     if (this.blok.author) {
-      await this.$store.dispatch("fetchStoryById", this.blok.author.id);
+      await this.$store.dispatch('fetchStoryById', this.blok.author.id);
       this.author = this.$store.getters.getStoryById(this.blok.author.id);
     }
+  },
+  data() {
+    return { categories: [], author: null };
   }
 };
 </script>

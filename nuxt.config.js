@@ -2,35 +2,35 @@
 // Using an environment variable is a good choice
 // e.g. const token = process.env.STORYBLOK_TOKEN
 const STORYBLOK_TOKEN =
-  process.env.STORYBLOK_TOKEN || "fRhLxFwXxMQSuteNdL1Lrwtt";
+  process.env.STORYBLOK_TOKEN || 'fRhLxFwXxMQSuteNdL1Lrwtt';
 
 export default {
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  mode: "universal",
+  mode: 'universal',
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
    */
-  target: "static",
+  target: 'static',
   /*
    ** Headers of the page
    */
   head: {
-    title: "Storyblok + Nuxt.js - A starter kit",
+    title: 'Storyblok + Nuxt.js - A starter kit',
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
-        hid: "description",
-        name: "description",
+        hid: 'description',
+        name: 'description',
         content:
-          "A starter kit for building a JAMStack + Headless CMS solution; built with Nuxt.js and Storyblok"
+          'A starter kit for building a JAMStack + Headless CMS solution; built with Nuxt.js and Storyblok'
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Global CSS
@@ -40,13 +40,13 @@ export default {
    ** Basic Components and Content Type setup
    */
   plugins: [
-    "@/plugins/content-types",
-    "@/plugins/filters",
-    "@/plugins/components",
-    "@/plugins/handle_generate_payload",
-    "@/plugins/cache_version",
-    "@/plugins/enable_draft_mode",
-    "@/plugins/fetch_layout"
+    '@/plugins/content-types',
+    '@/plugins/filters',
+    '@/plugins/components',
+    '@/plugins/handle_generate_payload',
+    '@/plugins/cache_version',
+    '@/plugins/enable_draft_mode',
+    '@/plugins/fetch_layout'
   ],
   /*
    ** Auto import components
@@ -59,23 +59,23 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/eslint-module',
-    "@nuxtjs/tailwindcss"
+    '@nuxtjs/tailwindcss'
   ],
   /*
    ** Nuxt.js modules
    */
   modules: [
     [
-      "storyblok-nuxt",
+      'storyblok-nuxt',
       {
         accessToken: STORYBLOK_TOKEN,
-        cacheProvider: "memory",
+        cacheProvider: 'memory',
         excludeHeaderScript: false
       }
     ]
   ],
   router: {
-    middleware: ["storyblok/fetch_story"]
+    middleware: ['storyblok/fetch_story']
   },
   /*
    ** Generate Routes via Storybloks Links API.
@@ -83,7 +83,7 @@ export default {
   generate: {
     crawler: false, // don't crawl the generated pages for more links
     fallback: true, // 404.html generation + _redirects file in static folder
-    routes: () => require("./helpers/SiteGeneration")(STORYBLOK_TOKEN)
+    routes: () => require('./helpers/SiteGeneration')(STORYBLOK_TOKEN)
   },
   /*
    ** Build configuration
@@ -95,7 +95,7 @@ export default {
      */
     extend(config, { isDev }) {
       if (isDev) {
-        config.devtool = "source-map";
+        config.devtool = 'source-map';
       }
     }
   }

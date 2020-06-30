@@ -5,10 +5,10 @@
       <p>{{ blok.text }}</p>
     </div>
     <component
-      :key="blok._uid"
-      v-for="blok in blok.buttons"
-      :blok="blok"
-      :is="blok.component | dashify"
+      :is="child.component | dashify"
+      v-for="child in blok.buttons"
+      :key="child._uid"
+      :blok="child"
     ></component>
     <div v-if="blok.image">
       <img alt="image" :src="blok.image" />

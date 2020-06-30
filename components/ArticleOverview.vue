@@ -5,7 +5,11 @@
     </div>
     <div class="flex flex-wrap">
       <div class="w-full md:w-8/12">
-        <div class="mb-4 border rounded" :key="article.id" v-for="article in articles">
+        <div
+          v-for="article in articles"
+          :key="article.id"
+          class="mb-4 border rounded"
+        >
           <img
             v-if="article.content.teaser_image"
             class="w-full"
@@ -18,9 +22,13 @@
             <div class="card-text mb-3">
               <markdown :text="article.content.intro"></markdown>
             </div>
-            <nuxt-link :to="`/${article.full_slug}`" class="button-standard">Read More →</nuxt-link>
+            <nuxt-link :to="`/${article.full_slug}`" class="button-standard"
+              >Read More →</nuxt-link
+            >
           </div>
-          <div class="p-2 bg-gray-100 text-gray-600 border-t">Posted on {{ article.published_at }}</div>
+          <div class="p-2 bg-gray-100 text-gray-600 border-t">
+            Posted on {{ article.published_at }}
+          </div>
         </div>
       </div>
 
@@ -29,13 +37,19 @@
           <h4 class="bg-gray-100 border-b pl-2">Categories</h4>
 
           <ul class="pl-2">
-            <li v-for="category in categories" :key="category.id">{{ category.name }}</li>
+            <li v-for="category in categories" :key="category.id">
+              {{ category.name }}
+            </li>
           </ul>
         </div>
 
         <div class="border rounded pb-2">
           <h4 class="bg-gray-100 border-b pl-2">Authors</h4>
-          <div class="flex items-center p-2" v-for="author in authors" :key="author.id">
+          <div
+            v-for="author in authors"
+            :key="author.id"
+            class="flex items-center p-2"
+          >
             <div class="mr-2 h-8">
               <img class="max-h-full" :src="author.content.image" />
             </div>
@@ -49,23 +63,23 @@
 
 <script>
 export default {
+  props: { blok: { required: true, type: Object } },
   computed: {
     authors() {
-      return this.$store.getters.getStories("authors/");
+      return this.$store.getters.getStories('authors/');
     },
     categories() {
-      return this.$store.getters.getStories("categories/");
+      return this.$store.getters.getStories('categories/');
     },
     articles() {
-      return this.$store.getters.getStories("article/");
+      return this.$store.getters.getStories('article/');
     }
   },
-  props: { blok: { required: true, type: Object } },
   mounted() {
     // TODO: Implement {exists: params.filter}
-    this.$store.dispatch("fetchStories", "authors/");
-    this.$store.dispatch("fetchStories", "categories/");
-    this.$store.dispatch("fetchStories", "article/");
+    this.$store.dispatch('fetchStories', 'authors/');
+    this.$store.dispatch('fetchStories', 'categories/');
+    this.$store.dispatch('fetchStories', 'article/');
   }
 };
 </script>

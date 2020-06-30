@@ -1,11 +1,11 @@
 <template>
-  <footer class="bg-black w-full text-white" v-editable="blok">
+  <footer v-editable="blok" class="bg-black w-full text-white">
     <div class="w-2/3 mx-auto py-2">
       <component
-        :key="blok._uid"
-        v-for="blok in blok.body"
-        :blok="blok"
-        :is="blok.component | dashify"
+        :is="child.component | dashify"
+        v-for="child in blok.body"
+        :key="child._uid"
+        :blok="child"
       ></component>
     </div>
   </footer>
@@ -16,6 +16,3 @@ export default {
   props: { blok: { required: true, type: Object } }
 };
 </script>
-
-
-

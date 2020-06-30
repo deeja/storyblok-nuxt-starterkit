@@ -13,8 +13,8 @@ export default {
   computed: {
     userDefinedStyles() {
       // bootstrap conversion for responsive images
-      const styles = this.blok.style.join(" ");
-      return styles.includes("img-fluid") ? styles : styles + " h-8";
+      const styles = this.blok.style.join(' ');
+      return styles.includes('img-fluid') ? styles : styles + ' h-8';
     }
   }
 };

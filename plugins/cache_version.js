@@ -1,5 +1,5 @@
-export default function({ store }) {
+export default ({ store }) => {
   if (!store.getters.getCacheVersion) {
-    return store.dispatch("fetchCacheVersion");
+    return store.dispatch('fetchCacheVersion');
   }
-}
+};

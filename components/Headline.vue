@@ -1,6 +1,5 @@
 <template>
-  <component v-editable="blok"
-             :is="blok.type">
+  <component :is="blok.type" v-editable="blok">
     <strong v-if="blok.strong">{{ blok.text }}</strong>
     <template v-else>{{ blok.text }}</template>
   </component>
@@ -8,6 +7,6 @@
 
 <script>
 export default {
-  props:{blok: {required: true, type: Object}}
-}
+  props: { blok: { required: true, type: Object } }
+};
 </script>

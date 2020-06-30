@@ -1,27 +1,31 @@
 <template>
   <section v-editable="blok" class="mb-2">
     <div class="flex justify-center">
-      <div class="w-full sm:w-3/12 text-center" v-if="blok.style == 'right'">
-        <a class="button-standard" :href="blok.button_link.cached_url">{{ blok.button_text }}</a>
+      <div v-if="blok.style == 'right'" class="w-full sm:w-3/12 text-center">
+        <a class="button-standard" :href="blok.button_link.cached_url">{{
+          blok.button_text
+        }}</a>
       </div>
       <div
-        class="w-full sm:w-9/12 text-center sm:text-right"
         v-if="blok.style == 'right'"
+        class="w-full sm:w-9/12 text-center sm:text-right"
       >
         <h2>{{ blok.headline }}</h2>
       </div>
-      <div class="w-full sm:w-9/12 text-left" v-if="blok.style != 'right'">
+      <div v-if="blok.style != 'right'" class="w-full sm:w-9/12 text-left">
         <h2>{{ blok.headline }}</h2>
       </div>
       <div
-        class="w-full sm:w-3/12 text-left sm:text-center"
         v-if="blok.style != 'right'"
+        class="w-full sm:w-3/12 text-left sm:text-center"
       >
-        <a class="button-standard" :href="blok.button_link.cached_url">{{ blok.button_text }}</a>
+        <a class="button-standard" :href="blok.button_link.cached_url">{{
+          blok.button_text
+        }}</a>
       </div>
     </div>
 
-    <div class="row pt-5" v-if="blok.image">
+    <div v-if="blok.image" class="row pt-5">
       <div class="w-full">
         <img alt="image" class="img-fluid" :src="blok.image" />
       </div>

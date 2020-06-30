@@ -1,32 +1,34 @@
 <template>
   <div class="px-1">
     <div v-if="layout && layout.header">
-      <div v-if="!layout.header.length" v-editable="layout">Define header blocks here</div>
+      <div v-if="!layout.header.length" v-editable="layout">
+        Define header blocks here
+      </div>
       <component
-        :key="blok._uid"
-        v-for="blok in layout.header"
-        :blok="blok"
-        :is="blok.component | dashify"
+        :is="child.component | dashify"
+        v-for="child in layout.header"
+        :key="child._uid"
+        :blok="child"
       ></component>
     </div>
     <main id="main" role="main" class="lg:w-2/3 lg:mx-auto">
-      <nuxt/>
+      <nuxt />
     </main>
     <div v-if="layout && layout.footer">
-      <div v-if="!layout.footer.length" v-editable="layout">Define footer blocks here</div>
+      <div v-if="!layout.footer.length" v-editable="layout">
+        Define footer blocks here
+      </div>
       <component
-        :key="blok._uid"
-        v-for="blok in layout.footer"
-        :blok="blok"
-        :is="blok.component | dashify"
+        :is="child.component | dashify"
+        v-for="child in layout.footer"
+        :key="child._uid"
+        :blok="child"
       ></component>
     </div>
   </div>
 </template>
 <script>
-import { reactToEdits } from "@/helpers/Storyblok";
-
-const layoutSlug = "global";
+const layoutSlug = 'global';
 export default {
   computed: {
     layout() {

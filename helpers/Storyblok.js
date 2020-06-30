@@ -1,9 +1,9 @@
-import crypto from "crypto";
-import marked from "marked";
+import crypto from 'crypto';
+import marked from 'marked';
 
-const STORYBLOK_TIMESTAMP = "_storyblok_tk[timestamp]";
-const STORYBLOK_TOKEN = "_storyblok_tk[token]";
-const STORYBLOK_SPACE_ID = "_storyblok_tk[space_id]";
+const STORYBLOK_TIMESTAMP = '_storyblok_tk[timestamp]';
+const STORYBLOK_TOKEN = '_storyblok_tk[token]';
+const STORYBLOK_SPACE_ID = '_storyblok_tk[space_id]';
 
 // Storyblok Module uses storyblok-js-client
 // https://github.com/storyblok/storyblok-js-client
@@ -18,19 +18,19 @@ const getFutureTimestamp = (hours = 1) =>
  * @param {*} component
  * @param {*} story
  */
-export const reactToEdits = function(storybridge, store, app, query) {
+export const reactToEdits = (storybridge, store, app, query) => {
   // need the credentials on redirect
 
-  storybridge.on(["input", "published", "change"], event => {
-    if (event.action == "input") {
-      store.commit("UPDATE_STORY", event.story);
+  storybridge.on(['input', 'published', 'change'], (event) => {
+    if (event.action === 'input') {
+      store.commit('UPDATE_STORY', event.story);
     } else {
       // force reload on save to whatever page has been routed to (not current url as that stays the same)
       const newLocation = buildRedirectLocation(app, query);
       window.location.href = newLocation;
     }
   });
-  console.log("STORYBRIDGE UP");
+  console.log('STORYBRIDGE UP');
 };
 
 const buildRedirectLocation = (app, query) => {
@@ -40,18 +40,18 @@ const buildRedirectLocation = (app, query) => {
   const newToken = generateToken(newTimestamp, spaceId, accessToken);
 
   const searchParams = new URLSearchParams();
-  Object.keys(query).forEach(key => searchParams.set(key, query[key]));
+  Object.keys(query).forEach((key) => searchParams.set(key, query[key]));
   searchParams.set(STORYBLOK_TIMESTAMP, newTimestamp);
-  searchParams.set(STORYBLOK_TOKEN, newToken);  
+  searchParams.set(STORYBLOK_TOKEN, newToken);
   const currentRoutePath = app.router.currentRoute.path;
-  return currentRoutePath + "?" + searchParams.toString();
-}
+  return currentRoutePath + '?' + searchParams.toString();
+};
 
 export const generateToken = (timestamp, spaceId, accessToken) => {
   return crypto
-    .createHash("sha1")
+    .createHash('sha1')
     .update(`${spaceId}:${accessToken}:${timestamp}`)
-    .digest("hex");
+    .digest('hex');
 };
 
 export function isEditMode(app, query) {
@@ -74,14 +74,12 @@ export function isEditMode(app, query) {
   return tokenMatch && withinTime;
 }
 
-
-
 export function markdown(string, param) {
   return marked(resizeImage(string, param));
 }
 
 export function resizeImage(str, param) {
-  return typeof str === "undefined"
-    ? ""
-    : str.replace(/a.storyblok.com/g, "img2.storyblok.com/" + param);
+  return typeof str === 'undefined'
+    ? ''
+    : str.replace(/a.storyblok.com/g, 'img2.storyblok.com/' + param);
 }
