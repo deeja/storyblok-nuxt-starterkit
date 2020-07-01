@@ -1,5 +1,7 @@
 # A StoryBlok / Nuxt starterkit
 
+Demo in use: https://nuxt-starter-kit.danbl.com/
+
 This code HEAVILY borrows from two different repositories: 
 - https://github.com/storyblok/bootstrap-nuxt-demo/
 - https://github.com/storyblok/nuxtwebsite 
@@ -12,9 +14,6 @@ This code HEAVILY borrows from two different repositories:
 ### Changes to those versions
 - Moving away from SASS and Bootstrap towards Tailwind and PostCSS
 - Yarn as the command interface
-
-## Site Preview
-https://nuxt-starter-kit.danbl.com/
 
 ## Getting Started
 
