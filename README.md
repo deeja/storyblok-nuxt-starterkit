@@ -102,8 +102,9 @@ Set up a webhook to keep the generated files up to date with latest content.
 1. Set the build commands 
     - Build Command: `yarn generate`
     - Folder: `dist`
-1. Add the netlify __PREVIEW__ key (not public, unless you want it to be a non-editing deployment)
+1. Add the Storyblok __PREVIEW__ key as an environment variable    
     - `Advanced -> STORYBLOK_TOKEN: XXXXXXXXXXXXXXXXXXX`
+    - Don't use the public key unless you want it to be a non-editing site. 
 1. Deploy Site and verify deployment
 1. Create a build webhook on Netlify `Build & Deploy -> Add build hook -> master`
 1. Copy build webhook url to Storyblok `General -> Webhooks -> Story Published & Unpublished` 
