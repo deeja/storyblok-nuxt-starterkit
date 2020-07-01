@@ -1,10 +1,12 @@
+import { storeActions } from '@/store/index';
+
 export default ({ store, route }) => {
   if (shouldIgnore(route)) {
     return;
   }
 
   if (store.getters.inDraftMode || !store.getters.getStoryByRoute(route)) {
-    return store.dispatch('fetchStory', route);
+    return store.dispatch(storeActions.FETCH_STORY_BY_ROUTE, route);
   }
 };
 

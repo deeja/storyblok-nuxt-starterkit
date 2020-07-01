@@ -1,4 +1,5 @@
 import { reactToEdits, isEditMode } from '@/helpers/Storyblok';
+import { storeMutations, storeActions } from '@/store/index';
 
 export default ({ app, store, route, enablePreview, $storybridge }) => {
   // check if in draft mode using query string storyblok token
@@ -9,7 +10,7 @@ export default ({ app, store, route, enablePreview, $storybridge }) => {
     }
     // enable preview if exists https://nuxtjs.org/blog/going-full-static/
     enablePreview && enablePreview();
-    store.commit('SET_DRAFT_MODE', route.query);
-    return store.dispatch('fetchStory', route);
+    store.commit(storeMutations.SET_DRAFT_MODE, route.query);
+    return store.dispatch(storeActions.FETCH_STORY_BY_ROUTE, route);
   }
 };

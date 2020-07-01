@@ -1,6 +1,21 @@
 const BASE_STORY_URL = 'cdn/stories/';
 const BASE_SPACES_URL = 'cdn/spaces/me/';
 
+export const storeActions = {
+  FETCH_STORIES: 'Fetch Stories',
+  FETCH_STORY_BY_ROUTE: 'Fetch Story by route',
+  FETCH_STORY_BY_UUID: 'Fetch Story by UUID',
+  FETCH_CACHE_VERSION: 'Fetch Cache version',
+  FETCH_STORY_BY_SLUG: 'Fetch Story by slug'
+};
+
+export const storeMutations = {
+  SET_DRAFT_MODE: 'Set Draft Mode',
+  SET_CACHE_VERSION: 'Set Cache Version',
+  UPDATE_STORY: 'Update Story',
+  ADD_STORY: 'Add Story'
+};
+
 const stateBuilder = () => ({
   cacheVersion: 0,
   draftMode: false,
@@ -15,7 +30,7 @@ export const mutations = {
    * @param {*} state
    * @param {*} useDraftMode set draft mode true = on
    */
-  SET_DRAFT_MODE(state, useDraftMode) {
+  [storeMutations.SET_DRAFT_MODE](state, useDraftMode) {
     if (useDraftMode) {
       console.log('DRAFT MODE ENABLED - CLEARING STATE');
       Object.assign(state, stateBuilder());
@@ -28,10 +43,10 @@ export const mutations = {
    * @param {*} state
    * @param {*} version
    */
-  SET_CACHE_VERSION(state, version) {
+  [storeMutations.SET_CACHE_VERSION](state, version) {
     state.cacheVersion = version;
   },
-  ADD_STORY(state, story) {
+  [storeMutations.ADD_STORY](state, story) {
     // TODO: handle translated_slugs
     const updated = {
       [getStorySlug(story.full_slug)]: story,
@@ -46,7 +61,7 @@ export const mutations = {
    * @param {*} state
    * @param {*} story
    */
-  UPDATE_STORY(state, story) {
+  [storeMutations.UPDATE_STORY](state, story) {
     const stories = state.stories;
     // replace stories in the array with the same id
     for (const key in stories) {
@@ -58,47 +73,47 @@ export const mutations = {
 };
 
 export const actions = {
-  fetchCacheVersion({ commit }) {
+  [storeActions.FETCH_CACHE_VERSION]({ commit }) {
     return this.$storyapi.get(BASE_SPACES_URL).then((res) => {
       const cacheVersion = res.data.space.version;
-      commit('SET_CACHE_VERSION', cacheVersion);
+      commit(storeMutations.SET_CACHE_VERSION, cacheVersion);
     });
   },
-  fetchStory({ commit, state }, route) {
+  [storeActions.FETCH_STORY_BY_ROUTE]({ commit, state }, route) {
     const storyPath = getStoryPath(route);
     return this.$storyapi
       .get(BASE_STORY_URL + storyPath, getRequestOptions(state))
       .then((res) => {
-        commit('ADD_STORY', res.data.story);
+        commit(storeMutations.ADD_STORY, res.data.story);
       })
       .catch((err) => {
         console.error(err);
       });
   },
-  fetchStoryById({ commit, state }, id) {
+  [storeActions.FETCH_STORY_BY_UUID]({ commit, state }, id) {
     return this.$storyapi
       .get(BASE_STORY_URL + id, {
         find_by: 'uuid',
         ...getRequestOptions(state)
       })
       .then((res) => {
-        commit('ADD_STORY', res.data.story);
+        commit(storeMutations.ADD_STORY, res.data.story);
       })
       .catch((err) => {
         console.error(err);
       });
   },
-  fetchStoryBySlug({ commit, state }, slug) {
+  [storeActions.FETCH_STORY_BY_SLUG]({ commit, state }, slug) {
     return this.$storyapi
       .get(BASE_STORY_URL + slug, getRequestOptions(state))
       .then((res) => {
-        commit('ADD_STORY', res.data.story);
+        commit(storeMutations.ADD_STORY, res.data.story);
       })
       .catch((err) => {
         console.error(err);
       });
   },
-  fetchStories({ commit, state }, startsWith) {
+  [storeActions.FETCH_STORIES]({ commit, state }, startsWith) {
     return this.$storyapi
       .get(BASE_STORY_URL, {
         ...getRequestOptions(state),
@@ -107,7 +122,7 @@ export const actions = {
       })
       .then((res) => {
         res.data.stories.forEach((s) => {
-          commit('ADD_STORY', s);
+          commit(storeMutations.ADD_STORY, s);
         });
       })
       .catch((err) => {

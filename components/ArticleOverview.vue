@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import { storeActions } from '@/store/index';
 export default {
   props: { blok: { required: true, type: Object } },
   computed: {
@@ -77,9 +78,9 @@ export default {
   },
   mounted() {
     // TODO: Implement {exists: params.filter}
-    this.$store.dispatch('fetchStories', 'authors/');
-    this.$store.dispatch('fetchStories', 'categories/');
-    this.$store.dispatch('fetchStories', 'article/');
+    this.$store.dispatch(storeActions.FETCH_STORIES, 'authors/');
+    this.$store.dispatch(storeActions.FETCH_STORIES, 'categories/');
+    this.$store.dispatch(storeActions.FETCH_STORIES, 'article/');
   }
 };
 </script>

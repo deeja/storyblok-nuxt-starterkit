@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import marked from 'marked';
+import { storeMutations } from '@/store/index';
 
 const STORYBLOK_TIMESTAMP = '_storyblok_tk[timestamp]';
 const STORYBLOK_TOKEN = '_storyblok_tk[token]';
@@ -23,7 +24,7 @@ export const reactToEdits = (storybridge, store, app, query) => {
 
   storybridge.on(['input', 'published', 'change'], (event) => {
     if (event.action === 'input') {
-      store.commit('UPDATE_STORY', event.story);
+      store.commit(storeMutations.UPDATE_STORY, event.story);
     } else {
       // force reload on save to whatever page has been routed to (not current url as that stays the same)
       const newLocation = buildRedirectLocation(app, query);

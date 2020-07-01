@@ -42,16 +42,19 @@
 </template>
 
 <script>
+import { storeActions } from '@/store/index';
 const startsWith = 'categories/';
 
 export default {
   props: { blok: { required: true, type: Object } },
   async fetch() {
-    await this.$store.dispatch('fetchStories', startsWith);
+    await this.$store.dispatch(storeActions.FETCH_STORIES, startsWith);
     this.categories = this.$store.getters.getStories(startsWith);
-
     if (this.blok.author) {
-      await this.$store.dispatch('fetchStoryById', this.blok.author.id);
+      await this.$store.dispatch(
+        storeActions.FETCH_STORY_BY_UUID,
+        this.blok.author.id
+      );
       this.author = this.$store.getters.getStoryById(this.blok.author.id);
     }
   },
