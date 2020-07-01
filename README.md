@@ -138,11 +138,11 @@ Another benefit is that the preview key is not exposed.
 
 1. Get it running using the instructions above
 1. Delete all the Storyblok pages from the demo site.    
-1. Delete the all components, EXCEPT Global and Page:
-    - from  Storyblok
+1. Delete all components EXCEPT Global and Page:
+    - from Storyblok
     - from the  Components folder.
     - from the `/plugins/components.js`
-1. Modify Global and Home components to the data structure you need
+1. Modify Global and Page components to the data structure you need
     - Global: Keep the header and footer sections
 1. Add pages
     - Global of type Global
