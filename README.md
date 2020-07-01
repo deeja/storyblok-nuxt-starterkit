@@ -83,7 +83,9 @@ These are being worked on where found.
 
 ### Editing content
 This is the part where it all comes together. 
-With the site running on `http://localhost:3000`
+1. Start the site locally `http://localhost:3000` using either:
+    - `yarn dev` - SPA (Single Page Application) in dev mode; auto updates on code changes.
+    - `yarn static`- Serves statically generated HTML; emulates production. 
 1. Go to [storyblok.com](https://www.storyblok.com/)
 1. Go to the demo space you have created. 
 1. `Content -> Home`
@@ -153,10 +155,3 @@ Tailwind usually purges all unused css classes within it's library on production
 Dynamic classes must be whitelisted in the `tailwind.config.js` for this project or they will be purged by PostCSS
 
  https://github.com/FullHuman/purgecss-docs/blob/master/whitelisting.md
-
-
-
-
-
-
-
