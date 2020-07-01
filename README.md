@@ -41,7 +41,7 @@ Otherwise, learn how to [git](https://git-scm.com/) or just use the `zip` downlo
 
 Change the `STORYBLOK_TOKEN` in the `nuxt.config.js`, or set it using an environment variable. 
 ```js
-// NOTE: The Storyblok token should NOT be stored as a general rule. 
+// NOTE: The Storyblok token should NOT be commited to code as a general rule. 
 // Using an environment variable is a good choice
 // e.g. const token = process.env.STORYBLOK_TOKEN
 const STORYBLOK_TOKEN =
